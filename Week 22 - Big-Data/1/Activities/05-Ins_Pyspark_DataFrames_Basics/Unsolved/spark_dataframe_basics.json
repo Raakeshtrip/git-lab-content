@@ -1,0 +1,80 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n## Dataframe Basics",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:43:42.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDataframe Basics\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-154342_712472097",
+      "dateCreated": "2019-02-04 15:43:42.000",
+      "dateStarted": "2019-02-04 15:43:42.000",
+      "dateFinished": "2019-02-04 15:43:42.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 16:25:25.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-154342_298530569",
+      "dateCreated": "2019-02-04 15:43:42.000",
+      "dateStarted": "2019-02-04 15:43:42.000",
+      "dateFinished": "2019-02-04 15:43:42.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "spark_dataframe_basics",
+  "id": "2E2H61KE3",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

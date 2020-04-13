@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Stock!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1 class="jumbotron">Inventory</h1>
+    <div>
+        {% for produces in produce %}
+        <div class="card" style="width: 24rem;">
+            <div class="card-body">
+              <h5 class="card-title">Type: {{produces.type}}</h5>
+              <p class="card-text">Cost Per Unit: {{produces.cost}}</p>
+              <p class="card-text">Potential: Revenue : {{(produces.stock*produces.cost)| round(2, 'floor')}}</p>
+            </div>
+            {% endfor %}
+          </div>
+         
+
+    </div>
+  </div>
+</body>
+
+</html>

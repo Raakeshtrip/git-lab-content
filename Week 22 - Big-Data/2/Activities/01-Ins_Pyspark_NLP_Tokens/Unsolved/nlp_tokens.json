@@ -1,0 +1,52 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.ml.feature import Tokenizer\nfrom pyspark.sql.functions import col, udf\nfrom pyspark.sql.types import IntegerType",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:35:14.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143358_552858253",
+      "dateCreated": "2019-02-04 14:33:58.000",
+      "dateStarted": "2019-02-04 14:34:51.506",
+      "dateFinished": "2019-02-04 14:35:14.386",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "nlp_tokens",
+  "id": "2E5N23EYE",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

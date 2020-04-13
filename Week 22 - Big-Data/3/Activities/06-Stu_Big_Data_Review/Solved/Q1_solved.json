@@ -1,0 +1,209 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n## What is the average rating for the coffee shop with the most reviews?",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:31:14.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": []
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhat is the average rating for the coffee shop with the most reviews?\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-173014_1212553858",
+      "dateCreated": "2019-05-09 17:30:14.000",
+      "dateStarted": "2019-05-09 17:31:14.417",
+      "dateFinished": "2019-05-09 17:31:14.419",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark import SparkFiles\n# Load in user_data.csv from S3 into a DataFrame\nurl \u003d \"https://s3.amazonaws.com/dataviz-curriculum/day_3/checkpoints/question_one.csv\"\nspark.sparkContext.addFile(url)\n\ndf \u003d spark.read.option(\u0027header\u0027, \u0027true\u0027).csv(SparkFiles.get(\"question_one.csv\"), inferSchema\u003dTrue, sep\u003d\u0027,\u0027, timestampFormat\u003d\"mm/dd/yy\")\ndf.show(10)",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:32:10.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+----------+\n|    coffee_shop_name|num_rating|\n+--------------------+----------+\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         2|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         3|\n|The Factory - Caf...|         5|\n+--------------------+----------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-173032_301916886",
+      "dateCreated": "2019-05-09 17:30:32.000",
+      "dateStarted": "2019-05-09 17:31:46.359",
+      "dateFinished": "2019-05-09 17:32:10.257",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.sql.functions import desc\ncoffee_ratings_df \u003ddf.select([\"coffee_shop_name\",\"num_rating\"])\\\n  .groupby(\"coffee_shop_name\")\\\n  .agg({\"num_rating\": \"avg\", \"coffee_shop_name\":\"count\"})\ncoffee_ratings_df.show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:32:16.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+------------------------------+-----------------------+------------------+\n|coffee_shop_name              |count(coffee_shop_name)|avg(num_rating)   |\n+------------------------------+-----------------------+------------------+\n|Flitch Coffee                 |28                     |4.821428571428571 |\n|Apanas Coffee \u0026 Beer          |136                    |4.580882352941177 |\n|Arturo\u0027s Underground Cafe     |100                    |4.3               |\n|Lola Savannah Coffee Downtown |4                      |5.0               |\n|Lola Savannah Coffee Lounge   |100                    |4.11              |\n|Epoch Coffee                  |400                    |3.8125            |\n|Caffe Medici                  |243                    |4.1193415637860085|\n|Figure 8 Coffee Purveyors     |100                    |4.5               |\n|Hot Mama\u0027s Cafe               |100                    |4.27              |\n|Sorrento\u0027s Coffee             |100                    |4.26              |\n|The Steeping Room             |100                    |3.96              |\n|Irie Bean Coffee Bar          |100                    |4.3               |\n|Thunderbird Coffee            |100                    |3.97              |\n|Flightpath Coffeehouse        |100                    |4.23              |\n|Tuscany At 360                |33                     |3.8181818181818183|\n|Halcyon                       |300                    |3.82              |\n|Summer Moon Coffee Bar        |100                    |4.09              |\n|Trianon Coffee                |98                     |4.020408163265306 |\n|Summermoon Coffee Bar         |100                    |4.53              |\n|Cenote                        |100                    |4.04              |\n+------------------------------+-----------------------+------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-173035_944102069",
+      "dateCreated": "2019-05-09 17:30:35.000",
+      "dateStarted": "2019-05-09 17:32:14.778",
+      "dateFinished": "2019-05-09 17:32:16.057",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ncoffee_ratings_df.orderBy(desc(\"count(coffee_shop_name)\")).show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:32:20.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------------------------------+-----------------------+------------------+\n|coffee_shop_name               |count(coffee_shop_name)|avg(num_rating)   |\n+-------------------------------+-----------------------+------------------+\n|Epoch Coffee                   |400                    |3.8125            |\n|Halcyon                        |300                    |3.82              |\n|The Factory - Cafe With a Soul |244                    |4.360655737704918 |\n|Caffe Medici                   |243                    |4.1193415637860085|\n|Houndstooth Coffee             |200                    |4.175             |\n|Venezia Italian Gelato         |200                    |4.81              |\n|Apanas Coffee \u0026 Beer           |136                    |4.580882352941177 |\n|Cenote                         |100                    |4.04              |\n|Sorrento\u0027s Coffee              |100                    |4.26              |\n|Lola Savannah Coffee Lounge    |100                    |4.11              |\n|Summer Moon Coffee Bar         |100                    |4.09              |\n|Summermoon Coffee Bar          |100                    |4.53              |\n|Figure 8 Coffee Purveyors      |100                    |4.5               |\n|Arturo\u0027s Underground Cafe      |100                    |4.3               |\n|Mozart\u0027s Coffee Roasters       |100                    |4.07              |\n|Live Oak Market                |100                    |4.51              |\n|Hot Mama\u0027s Cafe                |100                    |4.27              |\n|Flightpath Coffeehouse         |100                    |4.23              |\n|The Steeping Room              |100                    |3.96              |\n|Irie Bean Coffee Bar           |100                    |4.3               |\n+-------------------------------+-----------------------+------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-173152_1701479758",
+      "dateCreated": "2019-05-09 17:31:52.000",
+      "dateStarted": "2019-05-09 17:32:19.417",
+      "dateFinished": "2019-05-09 17:32:20.635",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:32:19.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-173219_2082096162",
+      "dateCreated": "2019-05-09 17:32:19.000",
+      "dateStarted": "2019-05-09 17:32:29.000",
+      "dateFinished": "2019-05-09 17:32:29.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "Q1_solved",
+  "id": "a186372d396842579c501660e8320a83",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {},
+  "info": {}
+}

@@ -1,0 +1,568 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\n# Load in data\nfrom pyspark import SparkFiles\nurl \u003d\"https://s3.amazonaws.com/dataviz-curriculum/day_1/rainfall.csv\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"rainfall.csv\"), sep\u003d\",\", header\u003dTrue, inferSchema\u003dTrue, timestampFormat\u003d\"yyyy/MM/dd HH:mm:ss\")\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:17:53.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+--------------------+----+----+\n|    station|                date|prcp|tobs|\n+-----------+--------------------+----+----+\n|USC00519397|2010-01-01 00:00:...|0.08|  65|\n|USC00519397|2010-01-02 00:00:...| 0.0|  63|\n|USC00519397|2010-01-03 00:00:...| 0.0|  74|\n|USC00519397|2010-01-04 00:00:...| 0.0|  76|\n|USC00519397|2010-01-07 00:00:...|0.06|  70|\n|USC00519397|2010-01-08 00:00:...| 0.0|  64|\n|USC00519397|2010-01-09 00:00:...| 0.0|  68|\n|USC00519397|2010-01-10 00:00:...| 0.0|  73|\n|USC00519397|2010-01-11 00:00:...|0.01|  64|\n|USC00519397|2010-01-12 00:00:...| 0.0|  61|\n|USC00519397|2010-01-14 00:00:...| 0.0|  66|\n|USC00519397|2010-01-15 00:00:...| 0.0|  65|\n|USC00519397|2010-01-16 00:00:...| 0.0|  68|\n|USC00519397|2010-01-17 00:00:...| 0.0|  64|\n|USC00519397|2010-01-18 00:00:...| 0.0|  72|\n|USC00519397|2010-01-19 00:00:...| 0.0|  66|\n|USC00519397|2010-01-20 00:00:...| 0.0|  66|\n|USC00519397|2010-01-21 00:00:...| 0.0|  69|\n|USC00519397|2010-01-22 00:00:...| 0.0|  67|\n|USC00519397|2010-01-23 00:00:...| 0.0|  67|\n+-----------+--------------------+----+----+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_980094539",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:17:09.912",
+      "dateFinished": "2019-02-01 20:17:53.141",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Show schema to confirm date type\ndf.printSchema()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:17:54.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "root\n |-- station: string (nullable \u003d true)\n |-- date: timestamp (nullable \u003d true)\n |-- prcp: double (nullable \u003d true)\n |-- tobs: integer (nullable \u003d true)\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_2099134410",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:17:53.176",
+      "dateFinished": "2019-02-01 20:17:54.194",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Import date time functions\nfrom pyspark.sql.functions import year",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:17:55.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_1610560030",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:17:54.196",
+      "dateFinished": "2019-02-01 20:17:55.081",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Show the year for the date column\ndf.select(year(df[\"date\"])).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:19:03.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+----------+\n|year(date)|\n+----------+\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n|      2010|\n+----------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_112116701",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:17:55.102",
+      "dateFinished": "2019-02-01 20:17:56.561",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Save the year as a new column\ndf \u003d df.withColumn(\"year\", year(df[\u0027date\u0027]))\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:17:57.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+--------------------+----+----+----+\n|    station|                date|prcp|tobs|year|\n+-----------+--------------------+----+----+----+\n|USC00519397|2010-01-01 00:00:...|0.08|  65|2010|\n|USC00519397|2010-01-02 00:00:...| 0.0|  63|2010|\n|USC00519397|2010-01-03 00:00:...| 0.0|  74|2010|\n|USC00519397|2010-01-04 00:00:...| 0.0|  76|2010|\n|USC00519397|2010-01-07 00:00:...|0.06|  70|2010|\n|USC00519397|2010-01-08 00:00:...| 0.0|  64|2010|\n|USC00519397|2010-01-09 00:00:...| 0.0|  68|2010|\n|USC00519397|2010-01-10 00:00:...| 0.0|  73|2010|\n|USC00519397|2010-01-11 00:00:...|0.01|  64|2010|\n|USC00519397|2010-01-12 00:00:...| 0.0|  61|2010|\n|USC00519397|2010-01-14 00:00:...| 0.0|  66|2010|\n|USC00519397|2010-01-15 00:00:...| 0.0|  65|2010|\n|USC00519397|2010-01-16 00:00:...| 0.0|  68|2010|\n|USC00519397|2010-01-17 00:00:...| 0.0|  64|2010|\n|USC00519397|2010-01-18 00:00:...| 0.0|  72|2010|\n|USC00519397|2010-01-19 00:00:...| 0.0|  66|2010|\n|USC00519397|2010-01-20 00:00:...| 0.0|  66|2010|\n|USC00519397|2010-01-21 00:00:...| 0.0|  69|2010|\n|USC00519397|2010-01-22 00:00:...| 0.0|  67|2010|\n|USC00519397|2010-01-23 00:00:...| 0.0|  67|2010|\n+-----------+--------------------+----+----+----+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_1691720725",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:17:56.562",
+      "dateFinished": "2019-02-01 20:17:57.838",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Find the average precipitation per year\naverages \u003d df.groupBy(\"year\").avg()\naverages.orderBy(\"year\").select(\"year\", \"avg(prcp)\").show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:18:06.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+----+-------------------+\n|year|          avg(prcp)|\n+----+-------------------+\n|2010|0.13852293920179035|\n|2011| 0.1637348927875241|\n|2012| 0.1163805668016194|\n|2013|0.15554567502020986|\n|2014|0.17855953372189803|\n|2015|0.19919999999999985|\n|2016|0.17984533591106822|\n|2017|0.16592738752959774|\n+----+-------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_1748569898",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:17:57.843",
+      "dateFinished": "2019-02-01 20:18:06.112",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.sql.functions import month\ndf.select(month(df[\u0027Date\u0027])).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:18:06.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------+\n|month(Date)|\n+-----------+\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n|          1|\n+-----------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_1316012017",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:18:06.116",
+      "dateFinished": "2019-02-01 20:18:06.961",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndf \u003d df.withColumn(\"month\", month(df[\u0027date\u0027]))\ndf.head()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:18:07.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "Row(station\u003du\u0027USC00519397\u0027, date\u003ddatetime.datetime(2010, 1, 1, 0, 0), prcp\u003d0.08, tobs\u003d65, year\u003d2010, month\u003d1)",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_1043348937",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:18:06.963",
+      "dateFinished": "2019-02-01 20:18:07.988",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\naverages \u003d df.groupBy(\"month\").max()\naverages.orderBy(\"month\").select(\"month\", \"max(prcp)\").show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:18:11.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+---------+\n|month|max(prcp)|\n+-----+---------+\n|    1|     8.81|\n|    2|     5.04|\n|    3|     6.38|\n|    4|     6.25|\n|    5|     4.07|\n|    6|     4.43|\n|    7|    11.53|\n|    8|     4.81|\n|    9|     6.83|\n|   10|     4.47|\n|   11|     8.06|\n|   12|     6.42|\n+-----+---------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_1984772910",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:18:07.997",
+      "dateFinished": "2019-02-01 20:18:11.555",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Import the summarized data to a pandas dataframe for plotting\n# Note: If your summarized data is still too big for your local memory then your notebook may crash\n\npandas_df \u003d averages.orderBy(\"month\").select(\"month\", \"max(prcp)\").toPandas()\npandas_df.head()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:18:16.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "   month  max(prcp)\n0      1       8.81\n1      2       5.04\n2      3       6.38\n3      4       6.25\n4      5       4.07",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_1445800594",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:18:11.556",
+      "dateFinished": "2019-02-01 20:18:16.394",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nimport matplotlib.pyplot as plt\npandas_df.set_index(\"month\", inplace\u003dTrue)\npandas_df.plot.bar()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:18:17.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cmatplotlib.axes._subplots.AxesSubplot at 0x7f3cc9a60450\u003e\n",
+            "type": "TEXT"
+          },
+          {
+            "data": "iVBORw0KGgoAAAANSUhEUgAAAXQAAAENCAYAAAAfTp5aAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMi4yLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvhp/UCwAAFJdJREFUeJzt3X+0VeWd3/H3FzH8UAeC3NCJxFzSghpBxV7ND1KLAlMMhmSm1hV1piLTGlecSp2uuq5mmczKWsmQjGk6qzOdhBWQ2Gomg8YfwTGjGBnETmCuQASDghqqdzR6g42moU4kfvvHOZDrFe7lnLMPPx7er7VYnL3P3vv7nHPhc/d5zrOfHZmJJOnIN+xQN0CSVA0DXZIKYaBLUiEMdEkqhIEuSYUw0CWpEAa6JBXCQJekQgwZ6BGxLCJejogt/db9SUQ8GRGPR8RdETG2vc2UJA3lQM7QlwNzB6x7EJiamWcA24AbKm6XJKlBw4faIDPXRETngHUP9Fv8AXDxgRQbP358dnZ2DrmdJOnXHnvssZ9mZsdQ2w0Z6AdgIfDtA9mws7OTnp6eCkpK0tEjIv73gWzX0peiEfEZYDdw2yDbXBURPRHR09fX10o5SdIgmg70iFgAXARcnoNM2ZiZSzKzKzO7OjqG/MQgSWpSU10uETEXuB74l5m5q9omSZKaMWSgR8S3gJnA+IjoBT5HbVTLCODBiAD4QWZe3cZ2SjpMvPHGG/T29vL6668f6qYUZ+TIkUycOJFjjz22qf0PZJTLpftYvbSpapKOeL29vZxwwgl0dnZSP6FTBTKTnTt30tvby6RJk5o6hleKSmrI66+/zoknnmiYVywiOPHEE1v65GOgS2qYYd4erb6vBrok1d199918/vOfb2uNlStX8tnPfrYtx67iwiKpaJ3d9zW1347F8ypuyeGp2fdnfw7l+/blL3+Ze++994C33717N8OHNxaj8+bN46abbqK7u5vRo0c32sRBeYYu6YizY8cOTj31VBYsWMCUKVO4/PLLWbVqFTNmzGDy5MmsX7+e9evX86EPfYjp06fz4Q9/mKeeegqAr371qyxcuBCAzZs3M3XqVHbt2sW2bdsYMWIE48ePB2DBggVcffXVdHV1MWXKFFauXAnA8uXLmT9/PhdccAGzZs0C4Etf+hLTpk3jzDPPpLu7G4CZM2eyaNEizjrrLKZOncr69euBWrfKzJkz9x6vSp6hSzoiPf3006xYsYJly5ZxzjnncPvtt7N27VruvfdevvjFL3LrrbfyyCOPMHz4cFatWsWNN97InXfeyaJFi5g5cyZ33XUXX/jCF/j617/O6NGjefTRRzn77LPfUmPHjh2sX7+eZ555hvPPP5+nn34agA0bNvD4448zbtw47r//fu655x7WrVvH6NGjeeWVV/buv2vXLjZt2sSaNWtYuHAhW7bUJq3t6urikUce4ZJLLqn0PTHQJR2RJk2axLRp0wA4/fTTmTVrFhHBtGnT2LFjB6+++ipXXHEF27dvJyJ44403ABg2bBjLly/njDPO4FOf+hQzZswA4MUXX2Tg1eyXXHIJw4YNY/Lkybzvfe/jySefBGDOnDmMGzcOgFWrVnHllVfu7T7Zsx7g0ktro77PO+88XnvtNX72s58xduxY3vWud/HCCy9U/p7Y5SLpiDRixIi9j4cNG7Z3ediwYezevZubbrqJ888/ny1btvDd7373LcMBt2/fzvHHH/+WUB01atTbhgwOHHWyZ/m44447oDbub//XX3+dUaNGHdAxGmGgSyrSq6++ykknnQTU+r37r7/22mtZs2YNO3fu5I477gDgtNNO29ulsseKFSt48803eeaZZ3j22Wc55ZRT3lZnzpw53HLLLezaVZsFpX+Xy7e/XZuIdu3atYwZM4YxY8YAsG3bNqZOnVrdi60z0CUV6frrr+eGG25g+vTp7N69e+/66667jmuuuYYpU6awdOlSuru7efnllznvvPPYuHEj/ecaPPnkkzn33HO58MIL+drXvsbIkSPfVmfu3LnMnz+frq4uzjrrLG6++ea9z40cOZLp06dz9dVXs3Tpry+wf/jhh5k3r/rRPDHIRImV6+rqSudD15HGYYtvtXXrVk477bRD3Yy2WLRoER/72MeYPXs2CxYs4KKLLuLiiw/o/j1vM3PmTG6++Wa6urresv6ll17isssu46GHHtrnfvt6fyPisczs2ucO/XiGLkl1N954496uk3Z57rnn+MpXvtKWYzvKRZLqJkyYwPz584G39rs3Y/Xq1ftcf84557R03MF4hi5JhTDQJTXsYH73djRp9X010CU1ZOTIkezcudNQr9ie+dD3NZLmQNmHLqkhEydOpLe3F2/6Xr09dyxqloEuqSHH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\u003d\u003d\n\n",
+            "type": "IMG"
+          },
+          {
+            "data": "\u003cFigure size 432x288 with 1 Axes\u003e",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_501848209",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:18:16.395",
+      "dateFinished": "2019-02-01 20:18:17.532",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndf.printSchema()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:19:22.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "root\n |-- station: string (nullable \u003d true)\n |-- date: timestamp (nullable \u003d true)\n |-- prcp: double (nullable \u003d true)\n |-- tobs: integer (nullable \u003d true)\n |-- year: integer (nullable \u003d true)\n |-- month: integer (nullable \u003d true)\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201908_1854289413",
+      "dateCreated": "2019-02-01 20:19:08.000",
+      "dateStarted": "2019-02-01 20:19:18.812",
+      "dateFinished": "2019-02-01 20:19:19.731",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:16:53.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201653_1330740555",
+      "dateCreated": "2019-02-01 20:16:53.000",
+      "dateStarted": "2019-02-01 20:19:29.000",
+      "dateFinished": "2019-02-01 20:19:29.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "spark_dates",
+  "id": "2E4GHEDQZ",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

@@ -1,0 +1,295 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.ml.feature import Tokenizer\nfrom pyspark.sql.functions import col, udf\nfrom pyspark.sql.types import IntegerType",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:40:06.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143914_1081324413",
+      "dateCreated": "2019-02-04 14:39:14.000",
+      "dateStarted": "2019-02-04 14:39:43.079",
+      "dateFinished": "2019-02-04 14:40:06.152",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndataframe \u003d spark.createDataFrame([\n    (0, \"Mary had a little lamb\"),\n    (1, \"It\u0027s fleece was white as snow\"),\n    (2, \"And everywhere Mary went\"),\n    (3, \"The lamb was sure to go\")\n], [\"id\", \"Nursery Rhyme\"])\ndataframe.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:40:12.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+--------------------+\n| id|       Nursery Rhyme|\n+---+--------------------+\n|  0|Mary had a little...|\n|  1|It\u0027s fleece was w...|\n|  2|And everywhere Ma...|\n|  3|The lamb was sure...|\n+---+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143914_1701625976",
+      "dateCreated": "2019-02-04 14:39:14.000",
+      "dateStarted": "2019-02-04 14:40:06.176",
+      "dateFinished": "2019-02-04 14:40:12.606",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Tokenize word\ntokenizer \u003d Tokenizer(inputCol\u003d\"Nursery Rhyme\", outputCol\u003d\"words\")\ntokenizer",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:40:14.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "Tokenizer_4013b483aaa213eae29c",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143914_1192709302",
+      "dateCreated": "2019-02-04 14:39:14.000",
+      "dateStarted": "2019-02-04 14:40:12.607",
+      "dateFinished": "2019-02-04 14:40:14.240",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create a function to return the length of a list\ndef word_list_length(word_list):\n    return len(word_list)",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:40:15.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143914_91606664",
+      "dateCreated": "2019-02-04 14:39:14.000",
+      "dateStarted": "2019-02-04 14:40:14.243",
+      "dateFinished": "2019-02-04 14:40:15.873",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create a user defined function \ncount_tokens \u003d udf(word_list_length, IntegerType())\ncount_tokens",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:40:17.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cpyspark.sql.functions.UserDefinedFunction at 0x7f39f0132d90\u003e",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143914_1480617216",
+      "dateCreated": "2019-02-04 14:39:14.000",
+      "dateStarted": "2019-02-04 14:40:15.878",
+      "dateFinished": "2019-02-04 14:40:17.381",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Transform DataFrame\ntokenized \u003d tokenizer.transform(dataframe)\n\n# Select the needed columns and don\u0027t truncate results\ntokenized.select(\"Nursery Rhyme\", \"words\")\\\n    .withColumn(\"tokens\", count_tokens(col(\"words\"))).show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:40:20.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------------------------+------------------------------------+------+\n|Nursery Rhyme                |words                               |tokens|\n+-----------------------------+------------------------------------+------+\n|Mary had a little lamb       |[mary, had, a, little, lamb]        |5     |\n|It\u0027s fleece was white as snow|[it\u0027s, fleece, was, white, as, snow]|6     |\n|And everywhere Mary went     |[and, everywhere, mary, went]       |4     |\n|The lamb was sure to go      |[the, lamb, was, sure, to, go]      |6     |\n+-----------------------------+------------------------------------+------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143914_1538001264",
+      "dateCreated": "2019-02-04 14:39:14.000",
+      "dateStarted": "2019-02-04 14:40:17.389",
+      "dateFinished": "2019-02-04 14:40:20.026",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:39:35.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143935_1541909449",
+      "dateCreated": "2019-02-04 14:39:35.000",
+      "dateStarted": "2019-02-04 14:40:58.000",
+      "dateFinished": "2019-02-04 14:40:58.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "udf",
+  "id": "2E2PKZCBA",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

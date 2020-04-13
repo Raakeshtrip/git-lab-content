@@ -1,0 +1,126 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n## What is the average rating for the coffee shop with the most reviews?",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:09:37.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": []
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhat is the average rating for the coffee shop with the most reviews?\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-170907_1752611024",
+      "dateCreated": "2019-05-09 17:09:07.000",
+      "dateStarted": "2019-05-09 17:09:37.450",
+      "dateFinished": "2019-05-09 17:09:37.452",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark import SparkFiles\n# Load in user_data.csv from S3 into a DataFrame\nurl \u003d \"https://s3.amazonaws.com/dataviz-curriculum/day_3/checkpoints/question_one.csv\"\nspark.sparkContext.addFile(url)\n\ndf \u003d spark.read.option(\u0027header\u0027, \u0027true\u0027).csv(SparkFiles.get(\"question_one.csv\"), inferSchema\u003dTrue, sep\u003d\u0027,\u0027, timestampFormat\u003d\"mm/dd/yy\")\ndf.show(10)",
+      "user": "",
+      "dateUpdated": "2019-05-09 16:49:13.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+----------+\n|    coffee_shop_name|num_rating|\n+--------------------+----------+\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         2|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         3|\n|The Factory - Caf...|         5|\n+--------------------+----------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-164834_1387654342",
+      "dateCreated": "2019-05-09 16:48:34.000",
+      "dateStarted": "2019-05-09 16:48:51.003",
+      "dateFinished": "2019-05-09 16:49:13.729",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-05-09 16:54:36.000",
+      "config": {
+        "selectedInterpreter": {},
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-164843_1581452",
+      "dateCreated": "2019-05-09 16:48:43.000",
+      "dateStarted": "2019-05-09 17:24:40.000",
+      "dateFinished": "2019-05-09 17:24:40.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "Q1_unsolved",
+  "id": "8d4f0364e2764feebe67d7b507518332",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {},
+  "info": {}
+}

@@ -1,0 +1,333 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n# Tokenizing",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:45:07.000",
+      "config": {
+        "selectedInterpreter": {},
+        "editorHide": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eTokenizing\u003c/h1\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144207_1778916963",
+      "dateCreated": "2019-02-04 14:42:07.000",
+      "dateStarted": "2019-02-04 14:45:07.016",
+      "dateFinished": "2019-02-04 14:45:07.017",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.ml.feature import RegexTokenizer, Tokenizer\nfrom pyspark.sql.functions import col, udf\nfrom pyspark.sql.types import IntegerType",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:45:07.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144207_1323834381",
+      "dateCreated": "2019-02-04 14:42:07.000",
+      "dateStarted": "2019-02-04 14:45:07.077",
+      "dateFinished": "2019-02-04 14:45:07.291",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Read in data from S3 Buckets\nfrom pyspark import SparkFiles\nurl \u003d\"https://s3.amazonaws.com/dataviz-curriculum/day_2/data.csv\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"data.csv\"), sep\u003d\",\", header\u003dTrue)\n\n# Show DataFrame\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:45:08.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+\n|                Poem|\n+--------------------+\n|This Autumn midnight|\n|Orion’s at my window|\n|shouting for his ...|\n+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144207_1699454529",
+      "dateCreated": "2019-02-04 14:42:07.000",
+      "dateStarted": "2019-02-04 14:45:07.292",
+      "dateFinished": "2019-02-04 14:45:08.287",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Tokenize DataFrame\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:29:13.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144207_26155271",
+      "dateCreated": "2019-02-04 14:42:07.000",
+      "dateStarted": "2019-02-04 14:45:08.290",
+      "dateFinished": "2019-02-04 14:45:08.472",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Transform DataFrame\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:29:18.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144207_736031827",
+      "dateCreated": "2019-02-04 14:42:07.000",
+      "dateStarted": "2019-02-04 14:45:08.474",
+      "dateFinished": "2019-02-04 14:45:08.816",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create a Function to count vowels\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:29:22.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144207_634948945",
+      "dateCreated": "2019-02-04 14:42:07.000",
+      "dateStarted": "2019-02-04 14:45:08.817",
+      "dateFinished": "2019-02-04 14:45:09.072",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Store a user defined function\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:29:29.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cpyspark.sql.functions.UserDefinedFunction at 0x7f1fd48acbd0\u003e",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144207_483960381",
+      "dateCreated": "2019-02-04 14:42:07.000",
+      "dateStarted": "2019-02-04 14:45:09.073",
+      "dateFinished": "2019-02-04 14:45:09.272",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create new DataFrame with the udf\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:29:38.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144207_1701237632",
+      "dateCreated": "2019-02-04 14:42:07.000",
+      "dateStarted": "2019-02-04 14:45:09.273",
+      "dateFinished": "2019-02-04 14:45:09.699",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "tokenizing_data",
+  "id": "2E28FT9UY",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

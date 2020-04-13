@@ -1,0 +1,121 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n## Which coffee shop had the fewest number of ratings?",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:11:28.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": []
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhich coffee shop had the fewest number of ratings?\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-171102_1294914799",
+      "dateCreated": "2019-05-09 17:11:02.000",
+      "dateStarted": "2019-05-09 17:11:28.481",
+      "dateFinished": "2019-05-09 17:11:28.484",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark import SparkFiles\n# Load in user_data.csv from S3 into a DataFrame\nurl \u003d \"https://s3.amazonaws.com/dataviz-curriculum/day_3/checkpoints/question_two.csv\"\nspark.sparkContext.addFile(url)\n\ndf \u003d spark.read.option(\u0027header\u0027, \u0027true\u0027).csv(SparkFiles.get(\"question_two.csv\"), inferSchema\u003dTrue, sep\u003d\u0027,\u0027, timestampFormat\u003d\"mm/dd/yy\")\ndf.show(10)",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:12:07.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+----------+\n|    coffee_shop_name|num_rating|\n+--------------------+----------+\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         2|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         3|\n|The Factory - Caf...|         5|\n+--------------------+----------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-171128_801013193",
+      "dateCreated": "2019-05-09 17:11:28.000",
+      "dateStarted": "2019-05-09 17:11:44.121",
+      "dateFinished": "2019-05-09 17:12:07.550",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-05-09 17:11:38.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-171138_2135974446",
+      "dateCreated": "2019-05-09 17:11:38.000",
+      "dateStarted": "2019-05-09 17:25:03.000",
+      "dateFinished": "2019-05-09 17:25:03.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "Q2_unsolved",
+  "id": "e832cf953e2f48e4934e57ea676bae36",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {},
+  "info": {}
+}

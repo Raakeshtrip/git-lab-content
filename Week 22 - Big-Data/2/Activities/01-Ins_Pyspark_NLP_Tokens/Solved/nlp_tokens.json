@@ -1,0 +1,249 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.ml.feature import Tokenizer\nfrom pyspark.sql.functions import col, udf\nfrom pyspark.sql.types import IntegerType",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:35:14.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143358_552858253",
+      "dateCreated": "2019-02-04 14:33:58.000",
+      "dateStarted": "2019-02-04 14:34:51.506",
+      "dateFinished": "2019-02-04 14:35:14.386",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create sample DataFrame\ndataframe \u003d spark.createDataFrame([\n    (0, \"Spark is great\"),\n    (1, \"We are learning Spark\"),\n    (2, \"Spark is better than hadoop no doubt\")\n], [\"id\", \"sentence\"])",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:35:17.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143358_1630776422",
+      "dateCreated": "2019-02-04 14:33:58.000",
+      "dateStarted": "2019-02-04 14:35:14.419",
+      "dateFinished": "2019-02-04 14:35:17.839",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Show DataFrame\ndataframe.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:35:21.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+--------------------+\n| id|            sentence|\n+---+--------------------+\n|  0|      Spark is great|\n|  1|We are learning S...|\n|  2|Spark is better t...|\n+---+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143358_762349494",
+      "dateCreated": "2019-02-04 14:33:58.000",
+      "dateStarted": "2019-02-04 14:35:17.850",
+      "dateFinished": "2019-02-04 14:35:21.257",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Show DataFrame\ndataframe.show()\n# Tokenize word\ntokenizer \u003d Tokenizer(inputCol\u003d\"sentence\", outputCol\u003d\"words\")\ntokenizer",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:35:23.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+--------------------+\n| id|            sentence|\n+---+--------------------+\n|  0|      Spark is great|\n|  1|We are learning S...|\n|  2|Spark is better t...|\n+---+--------------------+\n\nTokenizer_42d98c9124d75c3dd868",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143358_1155945157",
+      "dateCreated": "2019-02-04 14:33:58.000",
+      "dateStarted": "2019-02-04 14:35:21.289",
+      "dateFinished": "2019-02-04 14:35:23.356",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Show DataFrame\ndataframe.show()\n# Transform and show DataFrame\ntokenized \u003d tokenizer.transform(dataframe)\ntokenized.show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:35:25.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+--------------------+\n| id|            sentence|\n+---+--------------------+\n|  0|      Spark is great|\n|  1|We are learning S...|\n|  2|Spark is better t...|\n+---+--------------------+\n\n+---+------------------------------------+--------------------------------------------+\n|id |sentence                            |words                                       |\n+---+------------------------------------+--------------------------------------------+\n|0  |Spark is great                      |[spark, is, great]                          |\n|1  |We are learning Spark               |[we, are, learning, spark]                  |\n|2  |Spark is better than hadoop no doubt|[spark, is, better, than, hadoop, no, doubt]|\n+---+------------------------------------+--------------------------------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143358_1507619355",
+      "dateCreated": "2019-02-04 14:33:58.000",
+      "dateStarted": "2019-02-04 14:35:23.394",
+      "dateFinished": "2019-02-04 14:35:25.685",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:34:44.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-143444_300910895",
+      "dateCreated": "2019-02-04 14:34:44.000",
+      "dateStarted": "2019-02-04 14:37:40.000",
+      "dateFinished": "2019-02-04 14:37:40.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "nlp_tokens",
+  "id": "2E5N23EYE",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

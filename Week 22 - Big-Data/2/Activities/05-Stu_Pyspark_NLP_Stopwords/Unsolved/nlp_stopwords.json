@@ -1,0 +1,285 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.ml.feature import Tokenizer, StopWordsRemover",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:51:48.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145020_1624009467",
+      "dateCreated": "2019-02-04 14:50:20.000",
+      "dateStarted": "2019-02-04 14:51:28.278",
+      "dateFinished": "2019-02-04 14:51:48.510",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Read in data from S3 Buckets\nfrom pyspark import SparkFiles\nurl \u003d\"https://s3.amazonaws.com/dataviz-curriculum/day_2/food_reviews.csv\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"food_reviews.csv\"), sep\u003d\",\", header\u003dTrue)\n\n# Show DataFrame\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:51:53.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+\n|             Reviews|\n+--------------------+\n|The pasta was a d...|\n|We ate the fish i...|\n|My family did not...|\n|The girl even tri...|\n|this is his job a...|\n|I\u0027m always greete...|\n+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145020_887577297",
+      "dateCreated": "2019-02-04 14:50:20.000",
+      "dateStarted": "2019-02-04 14:51:48.512",
+      "dateFinished": "2019-02-04 14:51:53.334",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Tokenize DataFrame\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:32:31.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145020_549424027",
+      "dateCreated": "2019-02-04 14:50:20.000",
+      "dateStarted": "2019-02-04 14:51:53.337",
+      "dateFinished": "2019-02-04 14:51:53.568",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Transform DataFrame\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:32:36.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145020_1590650013",
+      "dateCreated": "2019-02-04 14:50:20.000",
+      "dateStarted": "2019-02-04 14:51:53.570",
+      "dateFinished": "2019-02-04 14:51:54.129",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Remove stop words\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:32:40.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145020_1574393357",
+      "dateCreated": "2019-02-04 14:50:20.000",
+      "dateStarted": "2019-02-04 14:51:54.131",
+      "dateFinished": "2019-02-04 14:51:54.426",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Transform new DataFrame\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:32:46.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145020_1399373492",
+      "dateCreated": "2019-02-04 14:50:20.000",
+      "dateStarted": "2019-02-04 14:51:54.428",
+      "dateFinished": "2019-02-04 14:51:55.162",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Show simplified review\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:32:51.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145020_265753617",
+      "dateCreated": "2019-02-04 14:50:20.000",
+      "dateStarted": "2019-02-04 14:51:55.164",
+      "dateFinished": "2019-02-04 14:51:55.596",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "stu_nlp_stopwords",
+  "id": "2E5PCQ42M",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

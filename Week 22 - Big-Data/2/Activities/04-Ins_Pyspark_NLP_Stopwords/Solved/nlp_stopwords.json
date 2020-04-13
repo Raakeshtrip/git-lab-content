@@ -1,0 +1,201 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\n# import stopwords library\nfrom pyspark.ml.feature import StopWordsRemover",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:47:59.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144713_1149120180",
+      "dateCreated": "2019-02-04 14:47:13.000",
+      "dateStarted": "2019-02-04 14:47:38.994",
+      "dateFinished": "2019-02-04 14:47:59.926",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create DataFrame\nsentenceData \u003d spark.createDataFrame([\n    (0, [\"Big\", \"data\", \"is\", \"super\", \"powerful\"]),\n    (1, [\"This\", \"is\", \"going\", \"to\", \"be\", \"epic\"])\n], [\"id\", \"raw\"])\n\nsentenceData.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:48:04.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+--------------------+\n| id|                 raw|\n+---+--------------------+\n|  0|[Big, data, is, s...|\n|  1|[This, is, going,...|\n+---+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144713_219200309",
+      "dateCreated": "2019-02-04 14:47:13.000",
+      "dateStarted": "2019-02-04 14:47:59.927",
+      "dateFinished": "2019-02-04 14:48:04.111",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Instantiate Remover\nremover \u003d StopWordsRemover(inputCol\u003d\"raw\", outputCol\u003d\"filtered\")",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:48:04.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144713_724279361",
+      "dateCreated": "2019-02-04 14:47:13.000",
+      "dateStarted": "2019-02-04 14:48:04.112",
+      "dateFinished": "2019-02-04 14:48:04.401",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Transform and show data\nremover.transform(sentenceData).show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:48:05.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+--------------------------------+----------------------------+\n|id |raw                             |filtered                    |\n+---+--------------------------------+----------------------------+\n|0  |[Big, data, is, super, powerful]|[Big, data, super, powerful]|\n|1  |[This, is, going, to, be, epic] |[going, epic]               |\n+---+--------------------------------+----------------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144713_1842033355",
+      "dateCreated": "2019-02-04 14:47:13.000",
+      "dateStarted": "2019-02-04 14:48:04.403",
+      "dateFinished": "2019-02-04 14:48:05.330",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:47:33.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-144733_1136798459",
+      "dateCreated": "2019-02-04 14:47:33.000",
+      "dateStarted": "2019-02-04 14:48:22.000",
+      "dateFinished": "2019-02-04 14:48:22.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "nlp_stopwords",
+  "id": "2E3Z88CBP",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

@@ -1,0 +1,324 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\n# Read in data from S3 Buckets\nfrom pyspark import SparkFiles\nurl \u003d\"https://s3.amazonaws.com/dataviz-curriculum/day_1/bigfoot.csv\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"bigfoot.csv\"), header\u003dTrue, inferSchema\u003dTrue, timestampFormat\u003d\"yyyy/MM/dd HH:mm:ss\")\n\n# Show DataFrame\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 20:24:50.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+------+--------------------+--------------+--------------------+--------+---------+\n|number|               title|classification|           timestamp|latitude|longitude|\n+------+--------------------+--------------+--------------------+--------+---------+\n|   637|Report 637: Campe...|       Class A|2000-06-16T12:00:00Z|    61.5|   -142.9|\n|  2917|Report 2917: Fami...|       Class A|1995-05-15T12:00:00Z| 55.1872|-132.7982|\n|  7963|Report 7963: Sasq...|       Class A|2004-02-09T12:00:00Z| 55.2035|-132.8202|\n|  9317|Report 9317: Driv...|       Class A|2004-06-18T12:00:00Z| 62.9375|-141.5667|\n| 13038|Report 13038: Sno...|       Class A|2004-02-15T12:00:00Z| 61.0595|-149.7853|\n| 23666|Report 23666: Pas...|       Class A|2008-04-23T12:00:00Z|62.77335|-141.3165|\n| 26604|Report 26604: Day...|       Class A|2009-07-15T12:00:00Z|64.89139|-147.8142|\n|   179|Report 179: Man a...|       Class A|1981-09-15T12:00:00Z|32.31435|-85.16235|\n|   245|Report 245: Two o...|       Class A|1999-07-15T12:00:00Z|33.28375|-87.32655|\n|   416|Report 416: A res...|       Class A|1983-11-15T12:00:00Z|34.95605| -86.4559|\n|   435|Report 435: Dayli...|       Class A|2000-10-10T12:00:00Z| 34.5422|-86.66465|\n|   451|Report 451: Young...|       Class A|1993-08-20T12:00:00Z| 34.9263|-87.02025|\n|   577|Report 577: Man h...|       Class A|1999-11-15T12:00:00Z|34.80405|-87.50905|\n|   799|Report 799: Perso...|       Class A|1978-04-15T12:00:00Z|34.92855| -87.1105|\n|   832|Report 832: Witne...|       Class A|1980-11-15T12:00:00Z|33.13195|-88.17885|\n|   961|Report 961: Motor...|       Class A|1997-01-06T12:00:00Z| 31.4515|-88.08305|\n|  1022|Report 1022: Hunt...|       Class A|1990-09-15T12:00:00Z|33.97575|-87.45876|\n|  1907|Report 1907: Moto...|       Class A|1996-12-05T12:00:00Z|31.58255|-87.96095|\n|  3028|Report 3028: Dayl...|       Class A|2000-06-01T12:00:00Z| 34.4881| -86.6333|\n|  3296|Report 3296: Man ...|       Class A|2001-10-15T12:00:00Z| 34.6802|-87.00665|\n+------+--------------------+--------------+--------------------+--------+---------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-202248_1625236994",
+      "dateCreated": "2019-02-01 20:22:48.000",
+      "dateStarted": "2019-02-01 20:24:20.595",
+      "dateFinished": "2019-02-01 20:24:50.449",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Import date time functions\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:23:05.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-202248_298443690",
+      "dateCreated": "2019-02-01 20:22:48.000",
+      "dateStarted": "2019-02-01 20:24:50.457",
+      "dateFinished": "2019-02-01 20:24:51.279",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create a new DataFrame with the column Year\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:23:11.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-202248_2100054933",
+      "dateCreated": "2019-02-01 20:22:48.000",
+      "dateStarted": "2019-02-01 20:24:51.280",
+      "dateFinished": "2019-02-01 20:24:52.691",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Save the year as a new column\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:23:17.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-202248_1334637513",
+      "dateCreated": "2019-02-01 20:22:48.000",
+      "dateStarted": "2019-02-01 20:24:52.695",
+      "dateFinished": "2019-02-01 20:24:53.849",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Find the total bigfoot sightings per year\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:23:23.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-202248_1450849036",
+      "dateCreated": "2019-02-01 20:22:48.000",
+      "dateStarted": "2019-02-01 20:24:53.851",
+      "dateFinished": "2019-02-01 20:24:59.759",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Import the summarized data to a pandas DataFrame for plotting\n# Note: If your summarized data is still too big for your local memory then your notebook may crash\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:23:30.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-202248_141577946",
+      "dateCreated": "2019-02-01 20:22:48.000",
+      "dateStarted": "2019-02-01 20:24:59.762",
+      "dateFinished": "2019-02-01 20:25:06.508",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Clean the data and rename the columns to \"year\" and \"sightings\"\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:23:38.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-202248_387964066",
+      "dateCreated": "2019-02-01 20:22:48.000",
+      "dateStarted": "2019-02-01 20:25:06.973",
+      "dateFinished": "2019-02-01 20:25:08.786",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Plot the year and sightings\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:23:44.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {},
+          {},
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-202248_1067808563",
+      "dateCreated": "2019-02-01 20:22:48.000",
+      "dateStarted": "2019-02-01 20:25:08.788",
+      "dateFinished": "2019-02-01 20:25:09.895",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "bigfoot",
+  "id": "2E57MFST4",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

@@ -1,0 +1,339 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.ml.feature import HashingTF, IDF, Tokenizer, StopWordsRemover",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:00:52.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145902_1296359929",
+      "dateCreated": "2019-02-04 14:59:02.000",
+      "dateStarted": "2019-02-04 15:00:21.921",
+      "dateFinished": "2019-02-04 15:00:52.583",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Read in data from S3 Buckets\nfrom pyspark import SparkFiles\nurl \u003d\"https://s3.amazonaws.com/dataviz-curriculum/day_2/airlines.csv\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"airlines.csv\"), sep\u003d\",\", header\u003dTrue)\n\n# Show DataFrame\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:01:00.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+\n|      Airline Tweets|\n+--------------------+\n|@VirginAmerica pl...|\n|@VirginAmerica se...|\n|@VirginAmerica do...|\n|@VirginAmerica Ar...|\n|@VirginAmerica aw...|\n+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145902_1343193189",
+      "dateCreated": "2019-02-04 14:59:02.000",
+      "dateStarted": "2019-02-04 15:00:52.661",
+      "dateFinished": "2019-02-04 15:01:00.212",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Tokenize DataFrame\ntokened \u003d Tokenizer(inputCol\u003d\"Airline Tweets\", outputCol\u003d\"words\")\ntokened_transformed \u003d tokened.transform(df)\ntokened_transformed.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:01:04.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+--------------------+\n|      Airline Tweets|               words|\n+--------------------+--------------------+\n|@VirginAmerica pl...|[@virginamerica, ...|\n|@VirginAmerica se...|[@virginamerica, ...|\n|@VirginAmerica do...|[@virginamerica, ...|\n|@VirginAmerica Ar...|[@virginamerica, ...|\n|@VirginAmerica aw...|[@virginamerica, ...|\n+--------------------+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145902_187435934",
+      "dateCreated": "2019-02-04 14:59:02.000",
+      "dateStarted": "2019-02-04 15:01:00.483",
+      "dateFinished": "2019-02-04 15:01:04.547",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Remove stop words\nstop_list \u003d [\"@VirginAmerica\", \"$30\", \"@virginamerica\"]\nremover \u003d StopWordsRemover(inputCol\u003d\"words\", outputCol\u003d\"filtered\", stopWords\u003dstop_list)\nremoved_frame \u003d remover.transform(tokened_transformed)\nremoved_frame.show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:01:08.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+\n|Airline Tweets                                                                                                                         |words                                                                                                                                                          |filtered                                                                                                                                  |\n+---------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+\n|@VirginAmerica plus you\u0027ve added commercials to the experience... tacky.                                                               |[@virginamerica, plus, you\u0027ve, added, commercials, to, the, experience..., tacky.]                                                                             |[plus, you\u0027ve, added, commercials, to, the, experience..., tacky.]                                                                        |\n|@VirginAmerica seriously would pay $30 a flight for seats that didn\u0027t have this playing. it\u0027s really the only bad thing about flying VA|[@virginamerica, seriously, would, pay, $30, a, flight, for, seats, that, didn\u0027t, have, this, playing., it\u0027s, really, the, only, bad, thing, about, flying, va]|[seriously, would, pay, a, flight, for, seats, that, didn\u0027t, have, this, playing., it\u0027s, really, the, only, bad, thing, about, flying, va]|\n|@VirginAmerica do you miss me? Don\u0027t worry we\u0027ll be together very soon.                                                                |[@virginamerica, do, you, miss, me?, don\u0027t, worry, we\u0027ll, be, together, very, soon.]                                                                           |[do, you, miss, me?, don\u0027t, worry, we\u0027ll, be, together, very, soon.]                                                                      |\n|@VirginAmerica Are the hours of operation for the Club at SFO that are posted online current?                                          |[@virginamerica, are, the, hours, of, operation, for, the, club, at, sfo, that, are, posted, online, current?]                                                 |[are, the, hours, of, operation, for, the, club, at, sfo, that, are, posted, online, current?]                                            |\n|@VirginAmerica awaiting my return phone call, just would prefer to use your online self-service option :(                              |[@virginamerica, awaiting, my, return, phone, call,, just, would, prefer, to, use, your, online, self-service, option, :(]                                     |[awaiting, my, return, phone, call,, just, would, prefer, to, use, your, online, self-service, option, :(]                                |\n+---------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145902_901121315",
+      "dateCreated": "2019-02-04 14:59:02.000",
+      "dateStarted": "2019-02-04 15:01:04.824",
+      "dateFinished": "2019-02-04 15:01:08.100",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Run the hashing term frequency\nhashing \u003d HashingTF(inputCol\u003d\"filtered\", outputCol\u003d\"hashedValues\", numFeatures\u003dpow(2,4))\n\n# Transform into a DF\nhashed_df \u003d hashing.transform(removed_frame)\nhashed_df.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:01:10.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+--------------------+--------------------+--------------------+\n|      Airline Tweets|               words|            filtered|        hashedValues|\n+--------------------+--------------------+--------------------+--------------------+\n|@VirginAmerica pl...|[@virginamerica, ...|[plus, you\u0027ve, ad...|(16,[3,4,5,7,8,9,...|\n|@VirginAmerica se...|[@virginamerica, ...|[seriously, would...|(16,[0,1,2,3,4,9,...|\n|@VirginAmerica do...|[@virginamerica, ...|[do, you, miss, m...|(16,[0,1,8,10,11,...|\n|@VirginAmerica Ar...|[@virginamerica, ...|[are, the, hours,...|(16,[0,1,2,4,7,9,...|\n|@VirginAmerica aw...|[@virginamerica, ...|[awaiting, my, re...|(16,[0,3,4,6,7,8,...|\n+--------------------+--------------------+--------------------+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145902_1603760453",
+      "dateCreated": "2019-02-04 14:59:02.000",
+      "dateStarted": "2019-02-04 15:01:08.159",
+      "dateFinished": "2019-02-04 15:01:10.260",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Fit the IDF on the data set \nidf \u003d IDF(inputCol\u003d\"hashedValues\", outputCol\u003d\"features\")\nidfModel \u003d idf.fit(hashed_df)\nrescaledData \u003d idfModel.transform(hashed_df)",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:01:15.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145902_1941425786",
+      "dateCreated": "2019-02-04 14:59:02.000",
+      "dateStarted": "2019-02-04 15:01:10.265",
+      "dateFinished": "2019-02-04 15:01:15.699",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Display the DataFrame\nrescaledData.select(\"words\", \"features\").show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:01:18.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n|words                                                                                                                                                          |features                                                                                                                                                                                                             |\n+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n|[@virginamerica, plus, you\u0027ve, added, commercials, to, the, experience..., tacky.]                                                                             |(16,[3,4,5,7,8,9,12,14],[0.4054651081081644,0.1823215567939546,1.0986122886681098,0.4054651081081644,0.4054651081081644,0.1823215567939546,0.0,0.0])                                                                 |\n|[@virginamerica, seriously, would, pay, $30, a, flight, for, seats, that, didn\u0027t, have, this, playing., it\u0027s, really, the, only, bad, thing, about, flying, va]|(16,[0,1,2,3,4,9,11,12,13,14],[0.3646431135879092,0.4054651081081644,0.6931471805599453,1.2163953243244932,0.1823215567939546,0.1823215567939546,0.8109302162163288,0.0,2.772588722239781,0.0])                      |\n|[@virginamerica, do, you, miss, me?, don\u0027t, worry, we\u0027ll, be, together, very, soon.]                                                                           |(16,[0,1,8,10,11,12,14,15],[0.1823215567939546,0.4054651081081644,0.8109302162163288,2.1972245773362196,0.4054651081081644,0.0,0.0,0.8109302162163288])                                                              |\n|[@virginamerica, are, the, hours, of, operation, for, the, club, at, sfo, that, are, posted, online, current?]                                                 |(16,[0,1,2,4,7,9,11,12,14,15],[0.5469646703818638,0.8109302162163288,1.3862943611198906,0.1823215567939546,0.4054651081081644,0.1823215567939546,0.4054651081081644,0.0,0.0,0.4054651081081644])                     |\n|[@virginamerica, awaiting, my, return, phone, call,, just, would, prefer, to, use, your, online, self-service, option, :(]                                     |(16,[0,3,4,6,7,8,9,12,13,14,15],[0.3646431135879092,0.8109302162163288,0.3646431135879092,1.0986122886681098,0.4054651081081644,0.4054651081081644,0.1823215567939546,0.0,1.3862943611198906,0.0,0.4054651081081644])|\n+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145902_413948777",
+      "dateCreated": "2019-02-04 14:59:02.000",
+      "dateStarted": "2019-02-04 15:01:16.412",
+      "dateFinished": "2019-02-04 15:01:18.918",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:00:15.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150015_1079613456",
+      "dateCreated": "2019-02-04 15:00:15.000",
+      "dateStarted": "2019-02-04 15:02:53.000",
+      "dateFinished": "2019-02-04 15:02:53.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "airline_hashing",
+  "id": "2E497VWGF",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

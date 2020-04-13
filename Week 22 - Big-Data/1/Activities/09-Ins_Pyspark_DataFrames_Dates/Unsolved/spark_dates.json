@@ -1,0 +1,50 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:21:08.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-201508_980094539",
+      "dateCreated": "2019-02-01 20:15:08.000",
+      "dateStarted": "2019-02-01 20:17:09.912",
+      "dateFinished": "2019-02-01 20:17:53.141",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "spark_dates",
+  "id": "2E4GHEDQZ",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

@@ -1,0 +1,487 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n### Load in data from S3",
+      "user": "",
+      "dateUpdated": "2019-02-04 18:40:22.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLoad in data from S3\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_1678535799",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 18:40:22.000",
+      "dateFinished": "2019-02-04 18:40:22.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark import SparkFiles\n# Load in user_data.csv from S3 into a DataFrame\nurl \u003d \"https://s3.amazonaws.com//\u003cinsert bucket name\u003e/ratings_and_sentiments.csv\"\nspark.sparkContext.addFile(url)\n\ndf \u003d spark.read.option(\u0027header\u0027, \u0027true\u0027).csv(SparkFiles.get(\"ratings_and_sentiments.csv\"), inferSchema\u003dTrue, sep\u003d\u0027,\u0027, timestampFormat\u003d\"mm/dd/yy\")\ndf.show(10)",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:21:08.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "python",
+          "profile": "python",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.python.PythonInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+--------------------+-----------------+----------+----------+---------+------------+---------+--------+------------+------------+----------+------------+-------------+------------+-----------+---------+----------+-------------+----------+\n|    coffee_shop_name|         review_text|           rating|num_rating|cat_rating|bool_HIGH|overall_sent|vibe_sent|tea_sent|service_sent|seating_sent|price_sent|parking_sent|location_sent|alcohol_sent|coffee_sent|food_sent|hours_sent|internet_sent|local_sent|\n+--------------------+--------------------+-----------------+----------+----------+---------+------------+---------+--------+------------+------------+----------+------------+-------------+------------+-----------+---------+----------+-------------+----------+\n|The Factory - Caf...|11/25/2016 1 chec...| 5.0 star rating |         5|      HIGH|        1|           4|        3|       0|           0|           0|         0|           0|            0|           1|          3|        0|         0|            0|         0|\n|The Factory - Caf...|12/2/2016 Listed ...| 4.0 star rating |         4|      HIGH|        1|           3|        3|       0|           0|           0|         0|           0|            0|           0|          0|        2|         0|            0|         0|\n|The Factory - Caf...|11/30/2016 1 chec...| 4.0 star rating |         4|      HIGH|        1|           2|        2|       0|           0|           3|         0|           0|            0|           0|         -1|        2|         0|            0|         0|\n|The Factory - Caf...|11/25/2016 Very c...| 2.0 star rating |         2|       LOW|        0|           1|        0|       0|           0|          -1|        -1|           0|            0|           0|          0|        0|         0|            0|         0|\n|The Factory - Caf...|12/3/2016 1 check...| 4.0 star rating |         4|      HIGH|        1|           2|        0|       0|           0|           0|         0|           3|            0|           0|          0|        0|         0|            0|         0|\n|The Factory - Caf...|11/20/2016 1 chec...| 4.0 star rating |         4|      HIGH|        1|           0|        2|       0|           0|           0|        -2|           0|            0|           0|          0|        0|         0|           -1|         0|\n|The Factory - Caf...|\"10/27/2016 2 che...| 4.0 star rating |         4|      HIGH|        1|           3|        0|       0|           0|           2|         0|           0|            0|           0|          1|        1|         1|            0|         0|\n|The Factory - Caf...|\"11/2/2016 2 chec...| 5.0 star rating |         5|      HIGH|        1|           0|        1|       0|           1|          -1|         0|           1|            1|           0|         -1|        0|         0|            0|         0|\n|The Factory - Caf...|\"10/25/2016 1 che...| 3.0 star rating |         3|       LOW|        0|           3|        3|       0|           0|           0|         1|           0|            0|           0|          0|        2|         0|            1|         0|\n|The Factory - Caf...|11/10/2016 3 chec...| 5.0 star rating |         5|      HIGH|        1|           3|        1|       0|           0|           0|         0|           0|            0|           0|          1|        0|         0|            0|         0|\n+--------------------+--------------------+-----------------+----------+----------+---------+------------+---------+--------+------------+------------+----------+------------+-------------+------------+-----------+---------+----------+-------------+----------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-191503_1095849720",
+      "dateCreated": "2019-02-04 19:15:03.000",
+      "dateStarted": "2019-02-04 19:15:43.813",
+      "dateFinished": "2019-02-04 19:16:13.223",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Transform DataFrame to fit coffee_rating table",
+      "user": "",
+      "dateUpdated": "2019-02-04 18:40:22.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eTransform DataFrame to fit coffee_rating table\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_1181506702",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 18:40:22.000",
+      "dateFinished": "2019-02-04 18:40:22.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nshop_df \u003d df.select([\"coffee_shop_name\",\"num_rating\"])\nshop_df.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:16:26.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+----------+\n|    coffee_shop_name|num_rating|\n+--------------------+----------+\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         2|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         3|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         3|\n|The Factory - Caf...|         3|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         5|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n|The Factory - Caf...|         4|\n+--------------------+----------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_938349958",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 19:16:23.737",
+      "dateFinished": "2019-02-04 19:16:24.250",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ncoffee_ratings_df \u003d shop_df.groupby(\"coffee_shop_name\").agg({\"num_rating\": \"avg\", \"coffee_shop_name\":\"count\"})\ncoffee_ratings_df.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:17:27.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+-----------------------+------------------+\n|    coffee_shop_name|count(coffee_shop_name)|   avg(num_rating)|\n+--------------------+-----------------------+------------------+\n|      Flitch Coffee |                     28| 4.821428571428571|\n|Apanas Coffee \u0026 B...|                    136| 4.580882352941177|\n|Arturo\u0027s Undergro...|                    100|               4.3|\n|Lola Savannah Cof...|                      4|               5.0|\n|Lola Savannah Cof...|                    100|              4.11|\n|       Epoch Coffee |                    400|            3.8125|\n|       Caffe Medici |                    243|4.1193415637860085|\n|Figure 8 Coffee P...|                    100|               4.5|\n|    Hot Mama\u0027s Cafe |                    100|              4.27|\n|  Sorrento\u0027s Coffee |                    100|              4.26|\n|  The Steeping Room |                    100|              3.96|\n|Irie Bean Coffee ...|                    100|               4.3|\n| Thunderbird Coffee |                    100|              3.97|\n|Flightpath Coffee...|                    100|              4.23|\n|     Tuscany At 360 |                     33|3.8181818181818183|\n|            Halcyon |                    300|              3.82|\n|Summer Moon Coffe...|                    100|              4.09|\n|     Trianon Coffee |                     98| 4.020408163265306|\n|Summermoon Coffee...|                    100|              4.53|\n|             Cenote |                    100|              4.04|\n+--------------------+-----------------------+------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_814135512",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 19:17:23.957",
+      "dateFinished": "2019-02-04 19:17:27.102",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.sql.functions import desc\ncoffee_ratings_df \u003d coffee_ratings_df.withColumnRenamed(\"count(coffee_shop_name)\", \"total_ratings\")\\\n                                     .withColumnRenamed(\"avg(num_rating)\", \"avg_rating\")\ncoffee_ratings_df.orderBy(desc(\"avg_rating\")).show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:17:40.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------------------+-------------+-----------------+\n|    coffee_shop_name|total_ratings|       avg_rating|\n+--------------------+-------------+-----------------+\n|Lola Savannah Cof...|            4|              5.0|\n|The Marvelous Vin...|           10|              5.0|\n|Mañana Coffee \u0026 J...|           33|4.848484848484849|\n|       Brian\u0027s Brew |           45|4.844444444444444|\n|Third Coast Coffe...|           56|4.821428571428571|\n|      Flitch Coffee |           28|4.821428571428571|\n|   Kowabunga Coffee |           16|           4.8125|\n|Venezia Italian G...|          200|             4.81|\n|      Legend Coffee |           28|4.714285714285714|\n|       Fleet Coffee |           57|4.701754385964913|\n|    My Sweet Austin |           31| 4.67741935483871|\n|         Dolce Neve |          100|             4.64|\n|       Holy Grounds |           30|4.633333333333334|\n|Anderson\u0027s Coffee...|          100|             4.62|\n|Apanas Coffee \u0026 B...|          136|4.580882352941177|\n|  Flat Track Coffee |           63|4.571428571428571|\n|Friends \u0026 Neighbors |           29|4.551724137931035|\n|Summermoon Coffee...|          100|             4.53|\n|      Corona Coffee |          100|             4.53|\n|    Live Oak Market |          100|             4.51|\n+--------------------+-------------+-----------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_322008729",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 19:17:31.758",
+      "dateFinished": "2019-02-04 19:17:33.904",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Transform DataFrame to fit date_table table",
+      "user": "",
+      "dateUpdated": "2019-02-04 18:40:22.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eTransform DataFrame to fit date_table table\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_933089373",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 18:40:22.000",
+      "dateFinished": "2019-02-04 18:40:22.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nreview_df \u003d df.select([\"review_text\"])",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:18:59.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_1880666381",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 19:17:42.354",
+      "dateFinished": "2019-02-04 19:17:42.555",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.sql.functions import regexp_extract\nreview_df \u003d review_df.withColumn(\"date\", regexp_extract(\"review_text\", \"\\d+/\\d+/\\d+\", 0))\\\n      .withColumn(\"review_text\", regexp_extract(\"review_text\", \"\\d+/\\d+/\\d+(?:\\s)(.*)\", 1))\\\n      .select([\"date\", \"review_text\"])\\\n      .dropna()\nreview_df.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:19:07.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+----------+--------------------+\n|      date|         review_text|\n+----------+--------------------+\n|11/25/2016|1 check-in Love l...|\n| 12/2/2016|Listed in Date Ni...|\n|11/30/2016|1 check-in Listed...|\n|11/25/2016|Very cool vibe! G...|\n| 12/3/2016|1 check-in They a...|\n|11/20/2016|1 check-in Very c...|\n|10/27/2016|2 check-ins Liste...|\n| 11/2/2016|2 check-ins Love ...|\n|10/25/2016|1 check-in Ok let...|\n|11/10/2016|3 check-ins This ...|\n|10/22/2016|1 check-in Listed...|\n|11/20/2016|The store has A+ ...|\n|11/17/2016|1 check-in Listed...|\n| 12/5/2016|This is such a cu...|\n|11/13/2016|Beautiful eccentr...|\n| 11/9/2016|1 check-in Listed...|\n| 11/6/2016|Really love the v...|\n|10/25/2016|1 check-in Check ...|\n|10/15/2016|1 check-in Note: ...|\n| 12/1/2016|So much aesthetic...|\n+----------+--------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_1977456558",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 19:19:02.898",
+      "dateFinished": "2019-02-04 19:19:03.492",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndate_df \u003d review_df.groupBy(\u0027date\u0027).agg({\"date\": \"count\"})\ndate_df \u003d date_df.withColumnRenamed(\"count(date)\", \"review_count\")\ndate_df.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:19:16.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+----------+------------+\n|      date|review_count|\n+----------+------------+\n| 8/21/2016|          16|\n| 6/29/2016|          10|\n| 8/19/2013|           2|\n| 2/27/2015|           5|\n| 7/31/2016|          13|\n| 3/17/2014|           7|\n|11/14/2015|          11|\n| 6/10/2011|           1|\n|10/10/2009|           1|\n| 4/27/2014|           1|\n| 3/27/2009|           1|\n| 12/8/2011|           1|\n| 2/21/2014|           2|\n| 8/31/2015|          10|\n| 1/15/2015|           3|\n| 3/16/2012|           1|\n|  8/9/2016|           4|\n|11/24/2016|           1|\n|  8/2/2014|           5|\n| 3/23/2011|           1|\n+----------+------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_1841340978",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 19:19:12.307",
+      "dateFinished": "2019-02-04 19:19:13.387",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndate_df.orderBy(desc(\"review_count\")).show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:19:58.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+----------+------------+\n|      date|review_count|\n+----------+------------+\n| 10/9/2016|          31|\n| 9/18/2016|          30|\n|11/20/2016|          27|\n| 11/2/2016|          27|\n| 12/2/2016|          26|\n| 12/4/2016|          26|\n| 9/15/2016|          25|\n| 11/6/2016|          24|\n| 7/24/2016|          24|\n| 10/7/2016|          24|\n| 12/1/2016|          23|\n|10/25/2016|          23|\n| 12/3/2016|          23|\n| 4/17/2016|          23|\n|  8/7/2016|          22|\n| 6/27/2016|          22|\n|  1/4/2016|          21|\n| 1/17/2016|          21|\n|11/21/2016|          21|\n| 8/13/2016|          20|\n+----------+------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-184022_872847599",
+      "dateCreated": "2019-02-04 18:40:22.000",
+      "dateStarted": "2019-02-04 19:19:18.555",
+      "dateFinished": "2019-02-04 19:19:20.482",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:19:18.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-191918_1271465812",
+      "dateCreated": "2019-02-04 19:19:18.000",
+      "dateStarted": "2019-02-04 19:21:10.000",
+      "dateFinished": "2019-02-04 19:21:10.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "cloud_etl_analysis",
+  "id": "2E4R2V3MR",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

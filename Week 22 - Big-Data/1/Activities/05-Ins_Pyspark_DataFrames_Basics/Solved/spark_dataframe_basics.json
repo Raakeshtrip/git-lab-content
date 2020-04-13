@@ -1,0 +1,1181 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n## Dataframe Basics",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:13:43.000",
+      "config": {
+        "selectedInterpreter": {},
+        "editorHide": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDataframe Basics\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1061179787",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:13:43.830",
+      "dateFinished": "2019-02-01 22:13:43.832",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Read in data from S3 Buckets\nfrom pyspark import SparkFiles\nurl \u003d \"https://s3.amazonaws.com/dataviz-curriculum/day_1/food.csv\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"food.csv\"), sep\u003d\",\", header\u003dTrue)\n\n# Show DataFrame\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:14:19.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+-----+\n|   food|price|\n+-------+-----+\n|  pizza|    0|\n|  sushi|   12|\n|chinese|   10|\n+-------+-----+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1444221898",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:14:18.085",
+      "dateFinished": "2019-02-01 22:14:19.078",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Print our schema\ndf.printSchema()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:15:43.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "root\n |-- food: string (nullable \u003d true)\n |-- price: string (nullable \u003d true)\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1194731080",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:15:41.859",
+      "dateFinished": "2019-02-01 22:15:42.883",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Show the columns\ndf.columns",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:15:54.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "[\u0027food\u0027, \u0027price\u0027]",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1599592889",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:15:54.181",
+      "dateFinished": "2019-02-01 22:15:54.904",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Describe our data\ndf.describe()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:15:58.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "DataFrame[summary: string, food: string, price: string]",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1655048145",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:15:57.039",
+      "dateFinished": "2019-02-01 22:15:58.406",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Import struct fields that we can use\nfrom pyspark.sql.types import StructField, StringType, IntegerType, StructType",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:16:09.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_475255564",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:16:01.715",
+      "dateFinished": "2019-02-01 22:16:02.408",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Next we need to create the list of struct fields\nschema \u003d [StructField(\"food\", StringType(), True), StructField(\"price\", IntegerType(), True),]\nschema",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:16:15.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "[StructField(food,StringType,true), StructField(price,IntegerType,true)]",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1780589224",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:16:12.252",
+      "dateFinished": "2019-02-01 22:16:13.070",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Pass in our fields\nfinal \u003d StructType(fields\u003dschema)\nfinal",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:16:20.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "StructType(List(StructField(food,StringType,true),StructField(price,IntegerType,true)))",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_198849604",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:16:17.694",
+      "dateFinished": "2019-02-01 22:16:18.397",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Read our data with our new schema\ndataframe \u003d spark.read.csv(SparkFiles.get(\"food.csv\"), schema\u003dfinal, sep\u003d\",\", header\u003dTrue)\ndataframe.show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:18:38.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+-----+\n|   food|price|\n+-------+-----+\n|  pizza|    0|\n|  sushi|   12|\n|chinese|   10|\n+-------+-----+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1502622305",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:17:17.184",
+      "dateFinished": "2019-02-01 22:17:18.024",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Print it out\ndataframe.printSchema()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:18:45.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "root\n |-- food: string (nullable \u003d true)\n |-- price: integer (nullable \u003d true)\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1532576236",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:18:42.511",
+      "dateFinished": "2019-02-01 22:18:43.281",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Accessing data",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:14:02.000",
+      "config": {
+        "selectedInterpreter": {},
+        "editorHide": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAccessing data\u003c/h3\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1015717069",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:14:02.046",
+      "dateFinished": "2019-02-01 22:14:02.046",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndataframe[\u0027price\u0027]",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:18:49.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "Column\u003cprice\u003e",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1722345228",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:18:46.404",
+      "dateFinished": "2019-02-01 22:18:47.142",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ntype(dataframe[\u0027price\u0027])",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:18:53.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "pyspark.sql.column.Column",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1047773826",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:18:51.175",
+      "dateFinished": "2019-02-01 22:18:51.958",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndataframe.select(\u0027price\u0027)",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:18:56.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "DataFrame[price: int]",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_800371329",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:18:54.868",
+      "dateFinished": "2019-02-01 22:18:56.320",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ntype(dataframe.select(\u0027price\u0027))",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:18:59.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "pyspark.sql.dataframe.DataFrame",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1194344270",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:18:58.167",
+      "dateFinished": "2019-02-01 22:18:58.937",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndataframe.select(\u0027price\u0027).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:05.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----+\n|price|\n+-----+\n|    0|\n|   12|\n|   10|\n+-----+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1711349795",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:04.143",
+      "dateFinished": "2019-02-01 22:19:05.685",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Manipulating Columns",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:14:07.000",
+      "config": {
+        "selectedInterpreter": {},
+        "editorHide": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eManipulating Columns\u003c/h3\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1187416499",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:14:07.821",
+      "dateFinished": "2019-02-01 22:14:07.822",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Add new column\ndataframe.withColumn(\u0027newprice\u0027, dataframe[\u0027price\u0027]).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:09.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+-----+--------+\n|   food|price|newprice|\n+-------+-----+--------+\n|  pizza|    0|       0|\n|  sushi|   12|      12|\n|chinese|   10|      10|\n+-------+-----+--------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1290541904",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:05.956",
+      "dateFinished": "2019-02-01 22:19:06.776",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Update column name\ndataframe.withColumnRenamed(\u0027price\u0027,\u0027newerprice\u0027).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:12.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+----------+\n|   food|newerprice|\n+-------+----------+\n|  pizza|         0|\n|  sushi|        12|\n|chinese|        10|\n+-------+----------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_182491084",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:10.903",
+      "dateFinished": "2019-02-01 22:19:11.723",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Double the price\ndataframe.withColumn(\u0027doubleprice\u0027,dataframe[\u0027price\u0027]*2).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:16.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+-----+-----------+\n|   food|price|doubleprice|\n+-------+-----+-----------+\n|  pizza|    0|          0|\n|  sushi|   12|         24|\n|chinese|   10|         20|\n+-------+-----+-----------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1695530635",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:15.409",
+      "dateFinished": "2019-02-01 22:19:16.195",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Add a dollar to the price\ndataframe.withColumn(\u0027add_one_dollar\u0027,dataframe[\u0027price\u0027]+1).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:19.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+-----+--------------+\n|   food|price|add_one_dollar|\n+-------+-----+--------------+\n|  pizza|    0|             1|\n|  sushi|   12|            13|\n|chinese|   10|            11|\n+-------+-----+--------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_402008200",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:18.625",
+      "dateFinished": "2019-02-01 22:19:19.390",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Half the price\ndataframe.withColumn(\u0027half_price\u0027,dataframe[\u0027price\u0027]/2).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:24.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+-----+----------+\n|   food|price|half_price|\n+-------+-----+----------+\n|  pizza|    0|       0.0|\n|  sushi|   12|       6.0|\n|chinese|   10|       5.0|\n+-------+-----+----------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1005356989",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:22.541",
+      "dateFinished": "2019-02-01 22:19:23.382",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Collecting a column as a list\ndataframe.select(\"price\").collect()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:27.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "[Row(price\u003d0), Row(price\u003d12), Row(price\u003d10)]",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_893135355",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:26.287",
+      "dateFinished": "2019-02-01 22:19:27.148",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n# Converting PySpark DataFrame to Pandas DataFrame",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:14:16.000",
+      "config": {
+        "selectedInterpreter": {},
+        "editorHide": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eConverting PySpark DataFrame to Pandas DataFrame\u003c/h1\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_769598001",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:14:16.009",
+      "dateFinished": "2019-02-01 22:14:16.010",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nimport pandas as pd\npandas_df \u003d dataframe.toPandas() ",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:31.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_197913962",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:30.839",
+      "dateFinished": "2019-02-01 22:19:31.562",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\npandas_df.head()",
+      "user": "",
+      "dateUpdated": "2019-02-01 22:19:37.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "      food  price\n0    pizza      0\n1    sushi     12\n2  chinese     10",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162738_1413829313",
+      "dateCreated": "2019-02-01 16:27:38.000",
+      "dateStarted": "2019-02-01 22:19:33.728",
+      "dateFinished": "2019-02-01 22:19:34.383",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-01 16:28:33.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-162833_411390414",
+      "dateCreated": "2019-02-01 16:28:33.000",
+      "dateStarted": "2019-02-01 16:29:47.000",
+      "dateFinished": "2019-02-01 16:29:47.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "spark_dataframe_basics",
+  "id": "2E5854FE1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

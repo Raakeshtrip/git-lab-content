@@ -1,0 +1,503 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n## Filtering Data",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:08:37.000",
+      "config": {
+        "selectedInterpreter": {},
+        "editorHide": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFiltering Data\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_708073392",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:08:37.261",
+      "dateFinished": "2019-02-01 19:08:37.264",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Read in data from S3 Buckets\nfrom pyspark import SparkFiles\n\nurl \u003d\"https://s3.amazonaws.com/dataviz-curriculum/day_1/wine.csv\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"wine.csv\"), sep\u003d\",\", header\u003dTrue)\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:19.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+--------------------+--------------------+------+-----+------------------+--------------------+-----------------+------------------+--------------------+\n|country|         description|         designation|points|price|          province|            region_1|         region_2|           variety|              winery|\n+-------+--------------------+--------------------+------+-----+------------------+--------------------+-----------------+------------------+--------------------+\n|     US|This tremendous 1...|   Martha\u0027s Vineyard|    96|  235|        California|         Napa Valley|             Napa|Cabernet Sauvignon|               Heitz|\n|  Spain|Ripe aromas of fi...|Carodorum Selecci...|    96|  110|    Northern Spain|                Toro|             null|     Tinta de Toro|Bodega Carmen Rod...|\n|     US|Mac Watson honors...|Special Selected ...|    96|   90|        California|      Knights Valley|           Sonoma|   Sauvignon Blanc|            Macauley|\n|     US|This spent 20 mon...|             Reserve|    96|   65|            Oregon|   Willamette Valley|Willamette Valley|        Pinot Noir|               Ponzi|\n| France|This is the top w...|         La Br��lade|    95|   66|          Provence|              Bandol|             null|Provence red blend|Domaine de la B̩gude|\n|  Spain|Deep, dense and p...|           Numanthia|    95|   73|    Northern Spain|                Toro|             null|     Tinta de Toro|           Numanthia|\n|  Spain|Slightly gritty b...|          San Rom��n|    95|   65|    Northern Spain|                Toro|             null|     Tinta de Toro|            Maurodos|\n|  Spain|Lush cedary black...|Carodorum �_nico ...|    95|  110|    Northern Spain|                Toro|             null|     Tinta de Toro|Bodega Carmen Rod...|\n|     US|This re-named vin...|              Silice|    95|   65|            Oregon|  Chehalem Mountains|Willamette Valley|        Pinot Noir|           Bergstr̦m|\n|     US|The producer sour...|Gap\u0027s Crown Vineyard|    95|   60|        California|        Sonoma Coast|           Sonoma|        Pinot Noir|           Blue Farm|\n|  Italy|Elegance, complex...|  Ronco della Chiesa|    95|   80|Northeastern Italy|              Collio|             null|          Friulano|    Borgo del Tiglio|\n|     US|From 18-year-old ...|Estate Vineyard W...|    95|   48|            Oregon|        Ribbon Ridge|Willamette Valley|        Pinot Noir|Patricia Green Ce...|\n|     US|A standout even i...|      Weber Vineyard|    95|   48|            Oregon|        Dundee Hills|Willamette Valley|        Pinot Noir|Patricia Green Ce...|\n| France|This wine is in p...|Ch̢teau Montus Pr...|    95|   90|  Southwest France|             Madiran|             null|            Tannat|   Vignobles Brumont|\n|     US|With its sophisti...|      Grace Vineyard|    95|  185|            Oregon|        Dundee Hills|Willamette Valley|        Pinot Noir|      Domaine Serene|\n|     US|First made in 200...|              Sigrid|    95|   90|            Oregon|   Willamette Valley|Willamette Valley|        Chardonnay|           Bergstr̦m|\n|     US|This blockbuster,...|     Rainin Vineyard|    95|  325|        California|Diamond Mountain ...|             Napa|Cabernet Sauvignon|                Hall|\n|  Spain|Nicely oaked blac...|6 A̱os Reserva Pr...|    95|   80|    Northern Spain|    Ribera del Duero|             null|       Tempranillo|            Valduero|\n| France|Coming from a sev...|       Le Pigeonnier|    95|  290|  Southwest France|              Cahors|             null|            Malbec|  Ch̢teau Lagr̩zette|\n|     US|This fresh and li...|Gap\u0027s Crown Vineyard|    95|   75|        California|        Sonoma Coast|           Sonoma|        Pinot Noir|        Gary Farrell|\n+-------+--------------------+--------------------+------+-----+------------------+--------------------+-----------------+------------------+--------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_1448328118",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:08:46.122",
+      "dateFinished": "2019-02-01 19:09:19.476",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndf.printSchema()",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:20.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "root\n |-- country: string (nullable \u003d true)\n |-- description: string (nullable \u003d true)\n |-- designation: string (nullable \u003d true)\n |-- points: string (nullable \u003d true)\n |-- price: string (nullable \u003d true)\n |-- province: string (nullable \u003d true)\n |-- region_1: string (nullable \u003d true)\n |-- region_2: string (nullable \u003d true)\n |-- variety: string (nullable \u003d true)\n |-- winery: string (nullable \u003d true)\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_312539446",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:19.478",
+      "dateFinished": "2019-02-01 19:09:20.171",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Order a DataFrame by ascending values\ndf.orderBy(df[\"points\"].asc()).show(5)",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:22.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+--------------------+--------------------+------+-----+--------+------------------+--------------+-------+------------+\n|country|         description|         designation|points|price|province|          region_1|      region_2|variety|      winery|\n+-------+--------------------+--------------------+------+-----+--------+------------------+--------------+-------+------------+\n|     US|This shows a deft...|                null|  null| null|    null|              null|          null|   null|        null|\n|     US|The strong aroma ...|                null|  null| null|    null|              null|          null|   null|        null|\n|  Italy|\"This nicely stru...| bitter almond an...|  null|   88|      24|Northeastern Italy|Venezia Giulia|   null|Pinot Grigio|\n|  Italy|This offers gener...|                null|  null| null|    null|              null|          null|   null|        null|\n|     US|               Ripe |                null|  null| null|    null|              null|          null|   null|        null|\n+-------+--------------------+--------------------+------+-----+--------+------------------+--------------+-------+------------+\nonly showing top 5 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_1091175161",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:20.172",
+      "dateFinished": "2019-02-01 19:09:22.058",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Import functions\nfrom pyspark.sql.functions import avg\ndf.select(avg(\"points\")).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:23.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-----------------+\n|      avg(points)|\n+-----------------+\n|87.88834105383143|\n+-----------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_1225475263",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:22.061",
+      "dateFinished": "2019-02-01 19:09:23.889",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Using SQL\ndf.filter(\"price\u003c20\").show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:25.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---------+--------------------+--------------------+------+-----+----------------+--------------------+--------------------+--------------------+--------------------+\n|  country|         description|         designation|points|price|        province|            region_1|            region_2|             variety|              winery|\n+---------+--------------------+--------------------+------+-----+----------------+--------------------+--------------------+--------------------+--------------------+\n| Bulgaria|This Bulgarian Ma...|             Bergul̩|    90|   15|        Bulgaria|                null|                null|              Mavrud|        Villa Melnik|\n|    Spain|Earthy plum and c...|              Amandi|    90|   17|         Galicia|       Ribeira Sacra|                null|             Menc�_a|      Don Bernardino|\n|       US|There\u0027s a lot to ...|                null|    90|   18|      California|Russian River Valley|              Sonoma|          Chardonnay|            De Loach|\n|       US|Massively fruity,...|                null|    91|   19|          Oregon|   Willamette Valley|   Willamette Valley|          Pinot Gris|   Trinity Vineyards|\n| Portugal|It is the ripe da...|             Premium|    91|   15|        Alentejo|                null|                null|      Portuguese Red|Adega Cooperativa...|\n|       US|Bright, light oak...|                null|    86|   10|      California|          California|    California Other|  Cabernet Sauvignon|      Belle Ambiance|\n| Portugal|The local Baga gr...|Marqu̻s de Marial...|    86|   12| Beira Atlantico|                null|                null|                Baga| Adega de Cantanhede|\n|       US|A smoky scent and...|     Small Lot Blend|    86|   13|      California|    Mendocino County|Mendocino/Lake Co...|          Chardonnay|            Parducci|\n| Portugal|This family-owned...|      Muros de Vinha|    86|   10|           Douro|                null|                null|      Portuguese Red|    Quinta do Portal|\n|   France|This is a smooth,...|Ch̢teau Beauvilla...|    86|   14|Southwest France|              Cahors|                null|       Malbec-Merlot|               Rigal|\n|       US|This is an easygo...|                null|    86|   18|      California|          California|    California Other|          Chardonnay|     The Naked Grape|\n|   France|Closer to Bordeau...|           Pigmentum|    86|   15|Southwest France|               Buzet|                null|       Merlot-Malbec|   Georges Vigouroux|\n|   France|This is a blend o...|           Pigmentum|    86|   10|Southwest France|   C̫tes de Gascogne|                null|Ugni Blanc-Colombard|   Georges Vigouroux|\n|       US|Aromas of ripe (l...|Tudor Hills Vineyard|    86|   17|      Washington|       Yakima Valley|     Columbia Valley|        Pinot Grigio| Martinez \u0026 Martinez|\n|       US|Strong wood smoke...|                null|    86|   12|      California|                Lodi|      Central Valley|      Cabernet Franc|           Ironstone|\n|       US|This medium-bodie...|                null|    86|   10|      California|          California|    California Other|          Chardonnay|       Leaping Horse|\n|       US|This wine is dry ...|                null|    86|   13|      California|          California|    California Other|         White Blend|        Kitchen Sink|\n| Portugal|This state-owned ...|Companhia das Lez...|    86|   12|            Tejo|                null|                null|      Portuguese Red|  Wines \u0026 Winemakers|\n|Argentina|This copper-tinte...|Terroir �_nico Pi...|    86|   12|Mendoza Province|           Tupungato|                null|                Ros̩|              Zorzal|\n|Argentina|Aromas of prune, ...|             Reserva|    86|   15|Mendoza Province|        Valle de Uco|                null|              Malbec|             Vi̱alba|\n+---------+--------------------+--------------------+------+-----+----------------+--------------------+--------------------+--------------------+--------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_38717475",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:23.892",
+      "dateFinished": "2019-02-01 19:09:25.832",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Filter by price on certain columns\ndf.filter(\"price\u003c20\").select([\u0027points\u0027,\u0027country\u0027, \u0027winery\u0027,\u0027price\u0027]).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:26.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+------+---------+--------------------+-----+\n|points|  country|              winery|price|\n+------+---------+--------------------+-----+\n|    90| Bulgaria|        Villa Melnik|   15|\n|    90|    Spain|      Don Bernardino|   17|\n|    90|       US|            De Loach|   18|\n|    91|       US|   Trinity Vineyards|   19|\n|    91| Portugal|Adega Cooperativa...|   15|\n|    86|       US|      Belle Ambiance|   10|\n|    86| Portugal| Adega de Cantanhede|   12|\n|    86|       US|            Parducci|   13|\n|    86| Portugal|    Quinta do Portal|   10|\n|    86|   France|               Rigal|   14|\n|    86|       US|     The Naked Grape|   18|\n|    86|   France|   Georges Vigouroux|   15|\n|    86|   France|   Georges Vigouroux|   10|\n|    86|       US| Martinez \u0026 Martinez|   17|\n|    86|       US|           Ironstone|   12|\n|    86|       US|       Leaping Horse|   10|\n|    86|       US|        Kitchen Sink|   13|\n|    86| Portugal|  Wines \u0026 Winemakers|   12|\n|    86|Argentina|              Zorzal|   12|\n|    86|Argentina|             Vi̱alba|   15|\n+------+---------+--------------------+-----+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_397604885",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:25.846",
+      "dateFinished": "2019-02-01 19:09:26.933",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Using Python Comparison Operators",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:26.000",
+      "config": {
+        "selectedInterpreter": {},
+        "editorHide": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eUsing Python Comparison Operators\u003c/h3\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_104738256",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:26.935",
+      "dateFinished": "2019-02-01 19:09:26.935",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Same results only this time using python\ndf.filter(df[\"price\"] \u003c 200).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:27.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+--------------------+--------------------+------+-----+------------------+------------------+-----------------+------------------+--------------------+\n|country|         description|         designation|points|price|          province|          region_1|         region_2|           variety|              winery|\n+-------+--------------------+--------------------+------+-----+------------------+------------------+-----------------+------------------+--------------------+\n|  Spain|Ripe aromas of fi...|Carodorum Selecci...|    96|  110|    Northern Spain|              Toro|             null|     Tinta de Toro|Bodega Carmen Rod...|\n|     US|Mac Watson honors...|Special Selected ...|    96|   90|        California|    Knights Valley|           Sonoma|   Sauvignon Blanc|            Macauley|\n|     US|This spent 20 mon...|             Reserve|    96|   65|            Oregon| Willamette Valley|Willamette Valley|        Pinot Noir|               Ponzi|\n| France|This is the top w...|         La Br��lade|    95|   66|          Provence|            Bandol|             null|Provence red blend|Domaine de la B̩gude|\n|  Spain|Deep, dense and p...|           Numanthia|    95|   73|    Northern Spain|              Toro|             null|     Tinta de Toro|           Numanthia|\n|  Spain|Slightly gritty b...|          San Rom��n|    95|   65|    Northern Spain|              Toro|             null|     Tinta de Toro|            Maurodos|\n|  Spain|Lush cedary black...|Carodorum �_nico ...|    95|  110|    Northern Spain|              Toro|             null|     Tinta de Toro|Bodega Carmen Rod...|\n|     US|This re-named vin...|              Silice|    95|   65|            Oregon|Chehalem Mountains|Willamette Valley|        Pinot Noir|           Bergstr̦m|\n|     US|The producer sour...|Gap\u0027s Crown Vineyard|    95|   60|        California|      Sonoma Coast|           Sonoma|        Pinot Noir|           Blue Farm|\n|  Italy|Elegance, complex...|  Ronco della Chiesa|    95|   80|Northeastern Italy|            Collio|             null|          Friulano|    Borgo del Tiglio|\n|     US|From 18-year-old ...|Estate Vineyard W...|    95|   48|            Oregon|      Ribbon Ridge|Willamette Valley|        Pinot Noir|Patricia Green Ce...|\n|     US|A standout even i...|      Weber Vineyard|    95|   48|            Oregon|      Dundee Hills|Willamette Valley|        Pinot Noir|Patricia Green Ce...|\n| France|This wine is in p...|Ch̢teau Montus Pr...|    95|   90|  Southwest France|           Madiran|             null|            Tannat|   Vignobles Brumont|\n|     US|With its sophisti...|      Grace Vineyard|    95|  185|            Oregon|      Dundee Hills|Willamette Valley|        Pinot Noir|      Domaine Serene|\n|     US|First made in 200...|              Sigrid|    95|   90|            Oregon| Willamette Valley|Willamette Valley|        Chardonnay|           Bergstr̦m|\n|  Spain|Nicely oaked blac...|6 A̱os Reserva Pr...|    95|   80|    Northern Spain|  Ribera del Duero|             null|       Tempranillo|            Valduero|\n|     US|This fresh and li...|Gap\u0027s Crown Vineyard|    95|   75|        California|      Sonoma Coast|           Sonoma|        Pinot Noir|        Gary Farrell|\n|     US|Heitz has made th...|          Grignolino|    95|   24|        California|       Napa Valley|             Napa|              Ros̩|               Heitz|\n|  Spain|Alluring, complex...|Prado Enea Gran R...|    95|   79|    Northern Spain|             Rioja|             null| Tempranillo Blend|                Muga|\n|     US|The apogee of thi...|       Giallo Solare|    95|   60|        California|       Edna Valley|    Central Coast|        Chardonnay|    Center of Effort|\n+-------+--------------------+--------------------+------+-----+------------------+------------------+-----------------+------------------+--------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_352562964",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:26.936",
+      "dateFinished": "2019-02-01 19:09:27.830",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndf.filter( (df[\"price\"] \u003c 200) | (df[\u0027points\u0027] \u003e 80) ).show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:28.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+--------------------+--------------------+------+-----+------------------+--------------------+-----------------+------------------+--------------------+\n|country|         description|         designation|points|price|          province|            region_1|         region_2|           variety|              winery|\n+-------+--------------------+--------------------+------+-----+------------------+--------------------+-----------------+------------------+--------------------+\n|     US|This tremendous 1...|   Martha\u0027s Vineyard|    96|  235|        California|         Napa Valley|             Napa|Cabernet Sauvignon|               Heitz|\n|  Spain|Ripe aromas of fi...|Carodorum Selecci...|    96|  110|    Northern Spain|                Toro|             null|     Tinta de Toro|Bodega Carmen Rod...|\n|     US|Mac Watson honors...|Special Selected ...|    96|   90|        California|      Knights Valley|           Sonoma|   Sauvignon Blanc|            Macauley|\n|     US|This spent 20 mon...|             Reserve|    96|   65|            Oregon|   Willamette Valley|Willamette Valley|        Pinot Noir|               Ponzi|\n| France|This is the top w...|         La Br��lade|    95|   66|          Provence|              Bandol|             null|Provence red blend|Domaine de la B̩gude|\n|  Spain|Deep, dense and p...|           Numanthia|    95|   73|    Northern Spain|                Toro|             null|     Tinta de Toro|           Numanthia|\n|  Spain|Slightly gritty b...|          San Rom��n|    95|   65|    Northern Spain|                Toro|             null|     Tinta de Toro|            Maurodos|\n|  Spain|Lush cedary black...|Carodorum �_nico ...|    95|  110|    Northern Spain|                Toro|             null|     Tinta de Toro|Bodega Carmen Rod...|\n|     US|This re-named vin...|              Silice|    95|   65|            Oregon|  Chehalem Mountains|Willamette Valley|        Pinot Noir|           Bergstr̦m|\n|     US|The producer sour...|Gap\u0027s Crown Vineyard|    95|   60|        California|        Sonoma Coast|           Sonoma|        Pinot Noir|           Blue Farm|\n|  Italy|Elegance, complex...|  Ronco della Chiesa|    95|   80|Northeastern Italy|              Collio|             null|          Friulano|    Borgo del Tiglio|\n|     US|From 18-year-old ...|Estate Vineyard W...|    95|   48|            Oregon|        Ribbon Ridge|Willamette Valley|        Pinot Noir|Patricia Green Ce...|\n|     US|A standout even i...|      Weber Vineyard|    95|   48|            Oregon|        Dundee Hills|Willamette Valley|        Pinot Noir|Patricia Green Ce...|\n| France|This wine is in p...|Ch̢teau Montus Pr...|    95|   90|  Southwest France|             Madiran|             null|            Tannat|   Vignobles Brumont|\n|     US|With its sophisti...|      Grace Vineyard|    95|  185|            Oregon|        Dundee Hills|Willamette Valley|        Pinot Noir|      Domaine Serene|\n|     US|First made in 200...|              Sigrid|    95|   90|            Oregon|   Willamette Valley|Willamette Valley|        Chardonnay|           Bergstr̦m|\n|     US|This blockbuster,...|     Rainin Vineyard|    95|  325|        California|Diamond Mountain ...|             Napa|Cabernet Sauvignon|                Hall|\n|  Spain|Nicely oaked blac...|6 A̱os Reserva Pr...|    95|   80|    Northern Spain|    Ribera del Duero|             null|       Tempranillo|            Valduero|\n| France|Coming from a sev...|       Le Pigeonnier|    95|  290|  Southwest France|              Cahors|             null|            Malbec|  Ch̢teau Lagr̩zette|\n|     US|This fresh and li...|Gap\u0027s Crown Vineyard|    95|   75|        California|        Sonoma Coast|           Sonoma|        Pinot Noir|        Gary Farrell|\n+-------+--------------------+--------------------+------+-----+------------------+--------------------+-----------------+------------------+--------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_1643668039",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:27.848",
+      "dateFinished": "2019-02-01 19:09:28.687",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\ndf.filter(df[\"country\"] \u003d\u003d \"US\").show()",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:09:29.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------+--------------------+--------------------+------+-----+----------+--------------------+-----------------+------------------+--------------------+\n|country|         description|         designation|points|price|  province|            region_1|         region_2|           variety|              winery|\n+-------+--------------------+--------------------+------+-----+----------+--------------------+-----------------+------------------+--------------------+\n|     US|This tremendous 1...|   Martha\u0027s Vineyard|    96|  235|California|         Napa Valley|             Napa|Cabernet Sauvignon|               Heitz|\n|     US|Mac Watson honors...|Special Selected ...|    96|   90|California|      Knights Valley|           Sonoma|   Sauvignon Blanc|            Macauley|\n|     US|This spent 20 mon...|             Reserve|    96|   65|    Oregon|   Willamette Valley|Willamette Valley|        Pinot Noir|               Ponzi|\n|     US|This re-named vin...|              Silice|    95|   65|    Oregon|  Chehalem Mountains|Willamette Valley|        Pinot Noir|           Bergstr̦m|\n|     US|The producer sour...|Gap\u0027s Crown Vineyard|    95|   60|California|        Sonoma Coast|           Sonoma|        Pinot Noir|           Blue Farm|\n|     US|From 18-year-old ...|Estate Vineyard W...|    95|   48|    Oregon|        Ribbon Ridge|Willamette Valley|        Pinot Noir|Patricia Green Ce...|\n|     US|A standout even i...|      Weber Vineyard|    95|   48|    Oregon|        Dundee Hills|Willamette Valley|        Pinot Noir|Patricia Green Ce...|\n|     US|With its sophisti...|      Grace Vineyard|    95|  185|    Oregon|        Dundee Hills|Willamette Valley|        Pinot Noir|      Domaine Serene|\n|     US|First made in 200...|              Sigrid|    95|   90|    Oregon|   Willamette Valley|Willamette Valley|        Chardonnay|           Bergstr̦m|\n|     US|This blockbuster,...|     Rainin Vineyard|    95|  325|California|Diamond Mountain ...|             Napa|Cabernet Sauvignon|                Hall|\n|     US|This fresh and li...|Gap\u0027s Crown Vineyard|    95|   75|California|        Sonoma Coast|           Sonoma|        Pinot Noir|        Gary Farrell|\n|     US|Heitz has made th...|          Grignolino|    95|   24|California|         Napa Valley|             Napa|              Ros̩|               Heitz|\n|     US|The apogee of thi...|       Giallo Solare|    95|   60|California|         Edna Valley|    Central Coast|        Chardonnay|    Center of Effort|\n|     US|San Jose-based pr...|       R-Bar-R Ranch|    95|   45|California|Santa Cruz Mountains|    Central Coast|        Pinot Noir|            Comartin|\n|     US|Bergstr̦m has mad...|       Shea Vineyard|    94|   62|    Oregon|   Willamette Valley|             null|        Pinot Noir|           Bergstr̦m|\n|     US|Focused and dense...|             Abetina|    94|  105|    Oregon|   Willamette Valley|Willamette Valley|        Pinot Noir|               Ponzi|\n|     US|Cranberry, baked ...|     Garys\u0027 Vineyard|    94|   60|California|Santa Lucia Highl...|    Central Coast|        Pinot Noir|                Roar|\n|     US|This standout Roc...|     The Funk Estate|    94|   60|Washington|Walla Walla Valle...|  Columbia Valley|             Syrah|              Saviah|\n|     US|Steely and perfum...|            Babushka|    90|   37|California|Russian River Valley|           Sonoma|        Chardonnay|            Zepaltas|\n|     US|The aromas entice...| Conner Lee Vineyard|    90|   42|Washington|Columbia Valley (WA)|  Columbia Valley|        Chardonnay|                Buty|\n+-------+--------------------+--------------------+------+-----+----------+--------------------+-----------------+------------------+--------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190617_1628064829",
+      "dateCreated": "2019-02-01 19:06:17.000",
+      "dateStarted": "2019-02-01 19:09:28.688",
+      "dateFinished": "2019-02-01 19:09:29.500",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-01 19:08:37.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190201-190837_1413572810",
+      "dateCreated": "2019-02-01 19:08:37.000",
+      "dateStarted": "2019-02-01 19:09:43.000",
+      "dateFinished": "2019-02-01 19:09:43.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "spark_filtering",
+  "id": "2E3ZQUJF1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

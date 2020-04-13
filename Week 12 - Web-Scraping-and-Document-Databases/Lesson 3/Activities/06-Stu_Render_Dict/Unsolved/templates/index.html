@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animal Adoption!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1 class="jumbotron">Animal</h1>
+    <div>
+      <ul style="list-style: none;">
+          {% for animal_list in dict %}
+          
+          <li style ="color:blue">name:{{animal_list.name}} type:{{animal_list.type}}</li>
+          {% endfor %}
+
+        
+        <!-- Loop through the dictionary -->
+
+
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

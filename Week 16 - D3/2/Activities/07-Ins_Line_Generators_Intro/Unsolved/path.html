@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Part 1 : Path HTML -->
+  <svg width="1000" height="1000">
+    <!-- <path d="M200,200 600,600 600,800" style="stroke:black; stroke-width:3; fill: none;"></path> -->
+  </svg>
+
+  <svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+
+  </svg>
+  <script>
+    // Part 2: Generating with D3 and Array of points
+    var points = [
+      [100, 120],
+      [200, 250],
+      [300, 160],
+      [400, 200]
+    ];
+    // inside d element specify how the path it to be rendered.  "drawing command" Much like using a virtual pen.
+    // move path to certain point using the upper case M. L command draws a line.
+    var dataArray = [{
+      x: 5,
+      y: 1
+    }, {
+      x: 10,
+      y: 5
+    }, {
+      x: 20,
+      y: 3
+    }, {
+      x: 25,
+      y: 10
+    }];
+  </script>
+</body>
+
+</html>

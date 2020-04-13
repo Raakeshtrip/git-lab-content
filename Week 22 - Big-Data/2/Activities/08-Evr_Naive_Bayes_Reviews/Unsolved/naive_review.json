@@ -1,0 +1,459 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\n# Read in data from S3 Buckets\nfrom pyspark import SparkFiles\nurl \u003d\"https://s3.amazonaws.com/dataviz-curriculum/day_2/yelp_reviews.csv\"\nspark.sparkContext.addFile(url)\ndf \u003d spark.read.csv(SparkFiles.get(\"yelp_reviews.csv\"), sep\u003d\",\", header\u003dTrue)\n\n# Show DataFrame\ndf.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:13:42.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+--------+--------------------+\n|   class|                text|\n+--------+--------------------+\n|positive|Wow... Loved this...|\n|negative|  Crust is not good.|\n|negative|Not tasty and the...|\n|positive|Stopped by during...|\n|positive|The selection on ...|\n|negative|Now I am getting ...|\n|negative|Honeslty it didn\u0027...|\n|negative|The potatoes were...|\n|positive|The fries were gr...|\n|positive|      A great touch.|\n|positive|Service was very ...|\n|negative|  Would not go back.|\n|negative|The cashier had n...|\n|positive|I tried the Cape ...|\n|negative|I was disgusted b...|\n|negative|I was shocked bec...|\n|positive| Highly recommended.|\n|negative|Waitress was a li...|\n|negative|This place is not...|\n|negative|did not like at all.|\n+--------+--------------------+\nonly showing top 20 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_1810131943",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:13.512",
+      "dateFinished": "2019-02-04 15:13:42.087",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.sql.functions import length\n# Create a length column to be used as a future feature \n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:37:41.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_234480572",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:42.108",
+      "dateFinished": "2019-02-04 15:13:44.039",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Feature Transformations\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:13:44.000",
+      "config": {
+        "selectedInterpreter": {},
+        "editorHide": true,
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eFeature Transformations\u003c/h3\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_1183105941",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:44.054",
+      "dateFinished": "2019-02-04 15:13:44.065",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create all the features to the data set\n\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:39:10.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_787897398",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:44.112",
+      "dateFinished": "2019-02-04 15:13:46.052",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create feature vectors\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:39:06.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_1720037724",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:46.055",
+      "dateFinished": "2019-02-04 15:13:47.491",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Create a and run a data processing Pipeline\n\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:38:14.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_614681139",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:47.497",
+      "dateFinished": "2019-02-04 15:13:49.004",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Fit and transform the pipeline\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:38:24.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_1146862937",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:49.008",
+      "dateFinished": "2019-02-04 15:13:55.017",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Show label and resulting features\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:38:28.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_1490046472",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:55.018",
+      "dateFinished": "2019-02-04 15:13:57.048",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Break data down into a training set and a testing set\n\n\n# Create a Naive Bayes model and fit training data\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:39:04.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_320080671",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:13:57.049",
+      "dateFinished": "2019-02-04 15:14:09.868",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Tranform the model with the testing data\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:38:42.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_769141148",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:14:09.871",
+      "dateFinished": "2019-02-04 15:14:15.759",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Use the Class Evaluator for a cleaner description\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 17:38:56.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150658_888203275",
+      "dateCreated": "2019-02-04 15:06:58.000",
+      "dateStarted": "2019-02-04 15:14:15.798",
+      "dateFinished": "2019-02-04 15:14:22.222",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-04 15:07:44.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-150744_1967754788",
+      "dateCreated": "2019-02-04 15:07:44.000",
+      "dateStarted": "2019-02-04 15:15:17.000",
+      "dateFinished": "2019-02-04 15:15:17.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "naive_review",
+  "id": "2E4E3CYXT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

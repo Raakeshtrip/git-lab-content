@@ -1,0 +1,70 @@
+# Simple Conceptual ERD
+Gym
+-
+Gym_Name
+Address
+City
+Zipcode
+
+Trainers
+-
+First_Name
+Last_Name
+
+Members
+-
+First_Name
+Last_Name
+Address
+City
+
+Payments
+-
+CreditCard_Info
+Billing_Zip
+
+# Logical ERD
+Gym
+-
+ID INTEGER PK
+Gym_Name VARCHAR
+Address VARCHAR
+City VARCHAR
+Zipcode VARCHAR
+
+Trainers
+-
+ID INTEGER PK
+First_Name VARCHAR
+Last_Name VARCHAR
+
+Members
+-
+ID INTEGER PK
+First_Name VARCHAR
+Last_Name VARCHAR
+Address VARCHAR
+City VARCHAR
+
+Payments
+-
+ID INTEGER PK
+CreditCard_Info INTEGER
+Billing_Zip INTEGER
+
+# Physical Relationships
+Members
+-
+ID INTEGER PK
+Payment_id INT FK - Payments.ID
+First_Name VARCHAR
+Last_Name VARCHAR
+Address VARCHAR
+City VARCHAR
+
+Payments
+-
+ID INTEGER PK
+Member_id INT FK - Members.ID
+CreditCard_Info INTEGER
+Billing_Zip INTEGER

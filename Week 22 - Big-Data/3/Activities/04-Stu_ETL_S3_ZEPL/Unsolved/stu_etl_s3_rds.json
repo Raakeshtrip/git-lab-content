@@ -1,0 +1,585 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n### Read in CSV from S3",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:37.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eRead in CSV from S3\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_722875534",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark import SparkFiles\n# Load in employee.csv from S3 into a DataFrame\nurl \u003d \"https://\u003cbucket name\u003e.s3.amazonaws.com/employee.csv\"\nspark.sparkContext.addFile(url)\n\ndf \u003d spark.read.option(\u0027header\u0027, \u0027true\u0027).csv(SparkFiles.get(\"employee.csv\"), inferSchema\u003dTrue, sep\u003d\u0027,\u0027, timestampFormat\u003d\"mm/dd/yy\")\ndf.show(10)",
+      "user": "",
+      "dateUpdated": "2019-10-30 19:16:59.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_666609007",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Drop duplicates and incomplete rows",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:37.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eDrop duplicates and incomplete rows\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_44782146",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:55.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_944733702",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Examine the schema",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:37.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExamine the schema\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_577212357",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:58.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_1477301819",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Rename columns",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:37.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eRename columns\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_15509050",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 20:00:01.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_1125140335",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Create a new DataFrame for employee info",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:37.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCreate a new DataFrame for employee info\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_1570234735",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 20:00:04.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_1797085416",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Write DataFrame to RDS",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:37.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eWrite DataFrame to RDS\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_237371079",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Configuration for RDS instance\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 20:00:06.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_1330641747",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark",
+      "user": "",
+      "dateUpdated": "2019-02-04 20:00:10.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark",
+          "profile": "spark",
+          "isCustom": false,
+          "editorLanguage": "scala",
+          "className": "org.apache.zeppelin.spark.SparkInterpreter",
+          "isDefault": true
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_758245196",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Create a new DataFrame for employee passwords",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:37.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCreate a new DataFrame for employee passwords\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_745152538",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 20:00:13.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_219685014",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%md\n### Write DataFrame to RDS",
+      "user": "",
+      "dateUpdated": "2019-02-04 19:59:37.000",
+      "config": {
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eWrite DataFrame to RDS\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_1027462917",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n",
+      "user": "",
+      "dateUpdated": "2019-02-04 20:00:18.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-195937_529812585",
+      "dateCreated": "2019-02-04 19:59:37.000",
+      "dateStarted": "2019-02-04 19:59:37.000",
+      "dateFinished": "2019-02-04 19:59:37.000",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "etl_s3_rds_unsolved",
+  "id": "2E2RZHD7Y",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

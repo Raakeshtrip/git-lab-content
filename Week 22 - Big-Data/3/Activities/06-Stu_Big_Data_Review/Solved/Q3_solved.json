@@ -1,0 +1,215 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n## What is the shape of the DataFrame?",
+      "user": "",
+      "dateUpdated": "2019-05-09 18:14:57.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "selectedInterpreter": {
+          "name": "md",
+          "profile": "md",
+          "isCustom": false,
+          "editorLanguage": "markdown",
+          "className": "org.apache.zeppelin.markdown.Markdown",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "editorHide": true,
+        "results": [
+          {}
+        ]
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhat is the shape of the DataFrame?\u003c/h2\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-181404_2066113200",
+      "dateCreated": "2019-05-09 18:14:04.000",
+      "dateStarted": "2019-05-09 18:14:57.703",
+      "dateFinished": "2019-05-09 18:14:57.705",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark import SparkFiles\n# Load in user_data.csv from S3 into a DataFrame\nurl \u003d \"https://s3.amazonaws.com/dataviz-curriculum/day_3/checkpoints/question_three.csv\"\nspark.sparkContext.addFile(url)\n\ndf \u003d spark.read.option(\u0027header\u0027, \u0027true\u0027).csv(SparkFiles.get(\"question_three.csv\"), inferSchema\u003dTrue, sep\u003d\u0027,\u0027, timestampFormat\u003d\"mm/dd/yy\")\ndf.show(10)",
+      "user": "",
+      "dateUpdated": "2019-05-09 18:15:17.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+-------------------+--------------------+\n|               date|                text|\n+-------------------+--------------------+\n|2016-01-25 00:11:00|1 check-in Love l...|\n|2016-01-02 00:12:00|Listed in Date Ni...|\n|2016-01-30 00:11:00|1 check-in Listed...|\n|2016-01-25 00:11:00|Very cool vibe! G...|\n|2016-01-03 00:12:00|1 check-in They a...|\n|2016-01-20 00:11:00|1 check-in Very c...|\n|2016-01-27 00:10:00|\"2 check-ins List...|\n|2016-01-02 00:11:00|\"2 check-ins Love...|\n|2016-01-25 00:10:00|\"1 check-in Ok le...|\n|2016-01-10 00:11:00|3 check-ins This ...|\n+-------------------+--------------------+\nonly showing top 10 rows\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-181417_2137876154",
+      "dateCreated": "2019-05-09 18:14:17.000",
+      "dateStarted": "2019-05-09 18:15:01.097",
+      "dateFinished": "2019-05-09 18:15:17.791",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Rows\ndf.count()",
+      "user": "",
+      "dateUpdated": "2019-05-09 18:18:24.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "Rows: 7616\n(\u0027Columns\u0027, 2)\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-181500_1158922102",
+      "dateCreated": "2019-05-09 18:15:00.000",
+      "dateStarted": "2019-05-09 18:16:35.171",
+      "dateFinished": "2019-05-09 18:16:35.386",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Columns\nlen(df.columns)",
+      "user": "",
+      "dateUpdated": "2019-05-09 18:18:21.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "2",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-181546_1075201041",
+      "dateCreated": "2019-05-09 18:15:46.000",
+      "dateStarted": "2019-05-09 18:18:12.271",
+      "dateFinished": "2019-05-09 18:18:12.386",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-05-09 18:16:52.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190509-181652_1624058901",
+      "dateCreated": "2019-05-09 18:16:52.000",
+      "dateStarted": "2019-05-09 18:18:28.000",
+      "dateFinished": "2019-05-09 18:18:28.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "Q3_solved",
+  "id": "29c01089c75a4557a6255d8f603dade6",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {},
+  "info": {}
+}

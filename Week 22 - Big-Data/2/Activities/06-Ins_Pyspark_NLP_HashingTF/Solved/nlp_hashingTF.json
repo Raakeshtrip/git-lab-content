@@ -1,0 +1,334 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\nfrom pyspark.ml.feature import HashingTF, IDF, Tokenizer",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:55:39.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145448_1696103903",
+      "dateCreated": "2019-02-04 14:54:48.000",
+      "dateStarted": "2019-02-04 14:55:18.558",
+      "dateFinished": "2019-02-04 14:55:39.092",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Sample DataFrame with repeating words\ndataframe \u003d spark.createDataFrame([\n    (0, \"The cow cow jumped and jumped cow\"),\n    (1, \"then the cow said\"),\n    (2, \"I am a cow that jumped\")\n],[\"id\", \"words\"])\n\ndataframe.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:55:43.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+--------------------+\n| id|               words|\n+---+--------------------+\n|  0|The cow cow jumpe...|\n|  1|   then the cow said|\n|  2|I am a cow that j...|\n+---+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145448_1879983294",
+      "dateCreated": "2019-02-04 14:54:48.000",
+      "dateStarted": "2019-02-04 14:55:39.093",
+      "dateFinished": "2019-02-04 14:55:43.266",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Tokenize the words\ntokenizer \u003d Tokenizer(inputCol\u003d\"words\", outputCol\u003d\"tokens\")\nwordsData \u003d tokenizer.transform(dataframe)\nwordsData.show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:55:44.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+--------------------+--------------------+\n| id|               words|              tokens|\n+---+--------------------+--------------------+\n|  0|The cow cow jumpe...|[the, cow, cow, j...|\n|  1|   then the cow said|[then, the, cow, ...|\n|  2|I am a cow that j...|[i, am, a, cow, t...|\n+---+--------------------+--------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145448_928731943",
+      "dateCreated": "2019-02-04 14:54:48.000",
+      "dateStarted": "2019-02-04 14:55:43.267",
+      "dateFinished": "2019-02-04 14:55:44.105",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Run the hashing term frequency\nhashing \u003d HashingTF(inputCol\u003d\"tokens\", outputCol\u003d\"hashedValues\", numFeatures\u003dpow(2,4))\n\n# Transform into a DF\nhashed_df \u003d hashing.transform(wordsData)",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:55:44.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145448_1070339258",
+      "dateCreated": "2019-02-04 14:54:48.000",
+      "dateStarted": "2019-02-04 14:55:44.107",
+      "dateFinished": "2019-02-04 14:55:44.599",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Display new DataFrame\nhashed_df.show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:55:45.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+---------------------------------+-----------------------------------------+----------------------------------------------+\n|id |words                            |tokens                                   |hashedValues                                  |\n+---+---------------------------------+-----------------------------------------+----------------------------------------------+\n|0  |The cow cow jumped and jumped cow|[the, cow, cow, jumped, and, jumped, cow]|(16,[11,13,14,15],[2.0,1.0,1.0,3.0])          |\n|1  |then the cow said                |[then, the, cow, said]                   |(16,[0,13,14,15],[1.0,1.0,1.0,1.0])           |\n|2  |I am a cow that jumped           |[i, am, a, cow, that, jumped]            |(16,[0,1,2,5,11,15],[1.0,1.0,1.0,1.0,1.0,1.0])|\n+---+---------------------------------+-----------------------------------------+----------------------------------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145448_421290009",
+      "dateCreated": "2019-02-04 14:54:48.000",
+      "dateStarted": "2019-02-04 14:55:44.601",
+      "dateFinished": "2019-02-04 14:55:45.370",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Fit the IDF on the data set \nidf \u003d IDF(inputCol\u003d\"hashedValues\", outputCol\u003d\"features\")\nidfModel \u003d idf.fit(hashed_df)\nrescaledData \u003d idfModel.transform(hashed_df)",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:55:47.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145448_464911408",
+      "dateCreated": "2019-02-04 14:54:48.000",
+      "dateStarted": "2019-02-04 14:55:45.397",
+      "dateFinished": "2019-02-04 14:55:47.396",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "%pyspark\n# Display the DataFrame\nrescaledData.select(\"words\", \"features\").show(truncate\u003dFalse)",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:55:48.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---------------------------------+---------------------------------------------------------------------------------------------------------------------------+\n|words                            |features                                                                                                                   |\n+---------------------------------+---------------------------------------------------------------------------------------------------------------------------+\n|The cow cow jumped and jumped cow|(16,[11,13,14,15],[0.5753641449035617,0.28768207245178085,0.28768207245178085,0.0])                                        |\n|then the cow said                |(16,[0,13,14,15],[0.28768207245178085,0.28768207245178085,0.28768207245178085,0.0])                                        |\n|I am a cow that jumped           |(16,[0,1,2,5,11,15],[0.28768207245178085,0.6931471805599453,0.6931471805599453,0.6931471805599453,0.28768207245178085,0.0])|\n+---------------------------------+---------------------------------------------------------------------------------------------------------------------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145448_1989821962",
+      "dateCreated": "2019-02-04 14:54:48.000",
+      "dateStarted": "2019-02-04 14:55:47.398",
+      "dateFinished": "2019-02-04 14:55:48.036",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-04 14:55:12.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-145512_1470299931",
+      "dateCreated": "2019-02-04 14:55:12.000",
+      "dateStarted": "2019-02-04 14:57:33.000",
+      "dateFinished": "2019-02-04 14:57:33.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "nlp_hashingTF",
+  "id": "2E3CSVXAV",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}

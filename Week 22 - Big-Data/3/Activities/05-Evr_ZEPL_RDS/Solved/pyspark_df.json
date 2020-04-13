@@ -1,0 +1,79 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%pyspark\njdbc_url \u003d \"jdbc:postgresql://\u003crds endpoint\u003e:5432/my_data_class_db\"\nconfig \u003d {\"user\":\"root\", \"password\": \"\u003cpassword\u003e\"}\nmy_df \u003d spark.read.jdbc(url\u003djdbc_url, table\u003d\u0027active_user\u0027, properties\u003dconfig)\nmy_df.limit(10).show()",
+      "user": "",
+      "dateUpdated": "2019-02-04 18:36:56.000",
+      "config": {
+        "selectedInterpreter": {
+          "name": "spark.pyspark",
+          "profile": "pyspark",
+          "isCustom": false,
+          "editorLanguage": "python",
+          "className": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "isDefault": false
+        },
+        "colWidth": 12.0,
+        "results": [
+          {}
+        ],
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "data": "+---+----------+---------+------------+\n| id|first_name|last_name|    username|\n+---+----------+---------+------------+\n|  6|    Fraser|  Korneev|  fstappard5|\n|  7|    Demott|   Rapson|  lhambling6|\n| 15|   Sadella|    Jaram|   wheinerte|\n| 17|    Hewitt|  Trammel|droughsedgeg|\n| 19|       Ted|  Knowlys|   ydudeniei|\n| 23|  Annmarie|   Lafond|    fmyttonm|\n| 28|      Toma|   Sokell|  bfletcherr|\n| 30|       Ram|  Lefever|    gturleyt|\n| 31|    Raddie|  Heindle|   calyukinu|\n| 33|    Wallie|     Caws|ckleinlererw|\n+---+----------+---------+------------+\n\n",
+            "type": "TEXT"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-183312_1953870140",
+      "dateCreated": "2019-02-04 18:33:12.000",
+      "dateStarted": "2019-02-04 18:36:19.761",
+      "dateFinished": "2019-02-04 18:36:48.124",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    },
+    {
+      "title": "",
+      "text": "",
+      "user": "",
+      "dateUpdated": "2019-02-04 18:36:13.000",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "",
+      "id": "20190204-183613_1398011409",
+      "dateCreated": "2019-02-04 18:36:13.000",
+      "dateStarted": "2019-02-04 18:36:57.000",
+      "dateFinished": "2019-02-04 18:36:57.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 0
+    }
+  ],
+  "name": "pyspark_df",
+  "id": "2E5QHH6JG",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "juno"
+  },
+  "info": {}
+}
